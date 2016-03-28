@@ -13,7 +13,7 @@ canonical.sh:export CANONICALIZERDIST=/www.web3d.org/x3d/tools/canonical/dist/li
 toxml.sh:export EXAMPLES=/www.web3d.org/x3d/content/examples/ 
 ```
 
-Installation and running
+Installation and running.  Installation will download additional packages with additional licenses in node_modules.
 
 ```
 git clone https://github.com/coderextreme/X3DJSONLD
