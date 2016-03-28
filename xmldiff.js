@@ -69,16 +69,26 @@ function compare(obj1, p1, obj2, p2) {
 				}
 			} else {
 				// obj1 has key
-				console.log(JSON.stringify(obj1[key]), "is only in left file at", p1key);
-				finalret = false;
+				if (key === 'containerField') {
+					console.log("Found a lonely ", p1key, obj1[key], "in left file");
+					finalret = true;
+				} else {
+					console.log(JSON.stringify(obj1[key]), "is only in left file at", p1key);
+					finalret = false;
+				}
 			}
 		}
 		for (var key in obj2) {
+			// obj2 has key
 			var p2key = p2+'/'+key;
 			if (typeof obj1[key] === 'undefined') {
-				// obj2 has key
-				console.log(JSON.stringify(obj2[key]), "is only in right file at ", p2key);
-				finalret = false;
+				if (key === 'containerField') {
+					console.log("Found a lonely ", p2key, obj2[key], "in right file");
+					finalret = true;
+				} else {
+					console.log(JSON.stringify(obj2[key]), "is only in right file at ", p2key);
+					finalret = false;
+				}
 			}
 		}
 	} else if (!(typeof obj1 === 'undefined' && typeof obj2 === 'undefined')) {
