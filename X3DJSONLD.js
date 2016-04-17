@@ -50,7 +50,14 @@ function elementSetAttribute(element, key, value) {
 		// encoding, UTF-8, UTF-16 or UTF-32
 		setEncoding(value);
 	} else {
-		element.setAttribute(key, value);
+		if (typeof element.setAttribute === 'function') {
+/*
+			if (typeof value === 'string') {
+				value = value.replace(/\\"/g, '&quot;');
+			}
+*/
+			element.setAttribute(key, value);
+		}
 	}
 }
 
@@ -112,32 +119,31 @@ function ConvertObject(key, object, element, path) {
 				var child = document.createComment(CommentStringToXML(object[key][c]));
 				element.appendChild(child);
 			}
-/*
 		} else if (key === 'Inline') {
-			var localArray =object[key]["@url"];
+			var localArray = object[key]["@url"];
 			processURLs(localArray, path);
+			var isJson = false;
 			for (var i in localArray) {
 				var url = localArray[i];
 				var tail = url.length - url.lastIndexOf(".json");
 				if (tail === 5 && object[key]["@load"]) {
+					isJson = true;
 					$.getJSON(url, function(json) {
-						console.error("Loaded"+json);
-						var child = CreateElement("Group", x3djsonNS);
-						elementSetAttribute(child, "USE", object[key]["@DEF"]);
-						ConvertToX3DOM(json, "-value", child, path);
+						var child = document.createDocumentFragment();
+						ConvertToX3DOM(json, "-children", child, path);
 						element.appendChild(child);
 						element.appendChild(document.createTextNode("\n"));
 					});
-				} else {
-					var child = CreateElement(key, x3djsonNS);
-					ConvertToX3DOM(object[key], key, child, path);
-					element.appendChild(child);
-					element.appendChild(document.createTextNode("\n"));
 				}
 			}
-*/					
+			if (!isJson) {
+				var child = CreateElement(key, x3djsonNS);
+				ConvertToX3DOM(object[key], key, child, path);
+				element.appendChild(child);
+				element.appendChild(document.createTextNode("\n"));
+			}
 		} else if (key === '#sourceText') {
-			CDATACreateFunction(document, element, object[key].join("\n"));
+			CDATACreateFunction(document, element, object[key].join("\r\n")+"\r\n");
 		} else {
 			if (key === 'connect' || key === 'fieldValue' || key === 'field' || key === 'meta' || key === 'component') {
 				for (var childkey in object[key]) {  // for each field
@@ -204,6 +210,7 @@ function processURLs(localArray, path) {
 				// no webroot absolute paths.  No /'s for cobweb shaders
 				localArray[url] = localArray[url].substring(1);
 			}
+			// console.error("Loading "+localArray[url]);
 		}
 			
        }
