@@ -1,6 +1,6 @@
 #!/bin/sh
 
-export CANONICALIZERDIST=/www.web3d.org/x3d/tools/canonical/dist/lib
+export CANONICALIZERDIST=/c/Users/coderextreme/Documents/NetBeansProjects/x3d-code/www.web3d.org/x3d/tools/canonical/dist/lib
 
 echo "@1 is when two strings are different lengths" | tee -a owndiffresults.txt
 echo "@2 is when two strings are unequal (quoting in word)" | tee -a owndiffresults.txt

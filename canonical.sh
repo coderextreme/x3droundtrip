@@ -1,6 +1,6 @@
 #!/bin/sh
 
-export CANONICALIZERDIST=/www.web3d.org/x3d/tools/canonical/dist/lib
+export CANONICALIZERDIST=/c/Users/coderextreme/Documents/NetBeansProjects/x3d-code/www.web3d.org/x3d/tools/canonical/dist/lib/
 javac -cp xmlunit/xmlunit-core/target/classes:xmlunit/xmlunit-legacy/target/classes:xmlunit/xmlunit-matchers/target/classes:. Compare.java
 
 

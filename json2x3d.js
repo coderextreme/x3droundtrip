@@ -6,7 +6,7 @@
 
 var fs = require('fs');
 var xmldom = require('xmldom');
-var X3DJSONLD = require('./X3DJSONLD');
+var X3DJSONLD = require('./X3DJSONLD.js');
 
 function fixXML(xmlstr) {
 	// get rid of self-closing tags
@@ -17,17 +17,20 @@ function fixXML(xmlstr) {
 	// strip out schema
 	// xmlstr = xmlstr.replace(/xsd:noNamespaceSchemaLocation="[^"]*"/gi, "");
 
+	// take out JSON quoting
+	xmlstr = xmlstr.replace(/\\/g, '');
+
 
 	// Fix CDATA sections
 	xmlstr = xmlstr.replace(/&lt;!\[CDATA\[/g, "<![CDATA[");
 	xmlstr = xmlstr.replace(/\]\]&gt;/g, "]]>");
 	do {
 		var xmlstr2 = xmlstr;
-		xmlstr = xmlstr2.replace(/(\<\!\[CDATA\[(.|\n)*)&lt;((.|\n)*\]\]\>)/gi, "$1<$3");
+		xmlstr = xmlstr2.replace(/(<!\[CDATA\[(.|\n)*)&lt;((.|\n)*\]\]>)/gi, "$1<$3");
 	} while (xmlstr !== xmlstr2);
 	do {
 		xmlstr2 = xmlstr;
-		xmlstr = xmlstr2.replace(/(\<\!\[CDATA\[(.|\n)*)&gt;((.|\n)*\]\]\>)/gi, "$1>$3");
+		xmlstr = xmlstr2.replace(/(<!\[CDATA\[(.|\n)*)&gt;((.|\n)*\]\]>)/gi, "$1>$3");
 	} while (xmlstr !== xmlstr2);
 	return xmlstr;
 }
