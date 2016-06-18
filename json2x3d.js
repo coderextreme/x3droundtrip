@@ -18,7 +18,7 @@ function fixXML(xmlstr) {
 	// xmlstr = xmlstr.replace(/xsd:noNamespaceSchemaLocation="[^"]*"/gi, "");
 
 	// take out JSON quoting
-	xmlstr = xmlstr.replace(/\\/g, '');
+	// xmlstr = xmlstr.replace(/\\/g, '');
 
 
 	// Fix CDATA sections
