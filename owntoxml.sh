@@ -1,3 +1,5 @@
+#!/bin/sh
+
 rm ../X3DJSONLD/*roundtrip*
 rm ../X3DJSONLD/*Canonical*
 cat /dev/null > owndiffresults.txt
