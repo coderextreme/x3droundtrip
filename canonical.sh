@@ -15,6 +15,7 @@ echo "@6 when the left file has a containerField" | tee -a diffresults.txt
 echo "@7 when the left file has a key" | tee -a diffresults.txt
 echo "@8 is when the objects are unequal" | tee -a diffresults.txt
 
+# i is -roundtrip.x3d
 for i in "$@"
 do
 	export DIRNAME=`dirname "$i"`
