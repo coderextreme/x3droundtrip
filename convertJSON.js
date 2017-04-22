@@ -87,7 +87,6 @@ function convertJSON(options) {
 				if (typeof str !== 'undefined') {
 					var outfile = basefile+options[ser];
 					fs.writeFileSync(outfile, str);
-					console.log(outfile);
 				} else {
 					throw("Wrote nothing, serializer returned nothing");
 				}
