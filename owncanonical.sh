@@ -15,7 +15,6 @@ echo "@8 is when the objects are unequal" | tee -a owndiffresults.txt
 
 for i in "$@"
 do
-	echo '#################################################' | tee -a owndiffresults.txt
 	export DIRNAME=`dirname "$i"`
  	export ORIGINAL=`basename "$i" -roundtrip.x3d`.x3d
  	export CANON=`basename "$i" -roundtrip.x3d`Canonical.x3d
@@ -24,8 +23,6 @@ do
 	
 	java -cp $CANONICALIZERDIST/log4j-1.2.15.jar:$CANONICALIZERDIST/xercesImpl.jar:$CANONICALIZERDIST/X3dC14n.jar org.web3d.x3d.tools.x3db.X3dCanonicalizer "$DIRNAME/$ORIGINAL" 2>&1 > /dev/null
 	java -cp $CANONICALIZERDIST/log4j-1.2.15.jar:$CANONICALIZERDIST/xercesImpl.jar:$CANONICALIZERDIST/X3dC14n.jar org.web3d.x3d.tools.x3db.X3dCanonicalizer "$DIRNAME/$ROUNDTRIP" 2>&1 > /dev/null
-	echo java Compare "$DIRNAME/$CANON" "$DIRNAME/$RTCANON"
-	java Compare "$DIRNAME/$CANON" "$DIRNAME/$RTCANON" 2>&1 | tee -a  ownjavadiffresults.txt
-	#echo node xmldiff.js "$DIRNAME/$CANON" "$DIRNAME/$RTCANON"
-	#node xmldiff.js "$DIRNAME/$CANON" "$DIRNAME/$RTCANON" 2>&1 | tee -a  owndiffresults.txt
+	#java Compare "$DIRNAME/$CANON" "$DIRNAME/$RTCANON" 2>&1 | tee -a  ownjavadiffresults.txt
+	node xmldiff.js "$DIRNAME/$CANON" "$DIRNAME/$RTCANON" 2>&1 | tee -a  owndiffresults.txt
 done
