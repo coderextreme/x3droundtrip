@@ -23,7 +23,7 @@ public class Compare {
 	DifferenceEngine diff = new DOMDifferenceEngine();
 	diff.addDifferenceListener(new ComparisonListener() {
 		public void comparisonPerformed(Comparison comparison, ComparisonResult outcome) {
-		    System.err.println("\n difference: " + comparison)
+		    System.err.println("\n difference: " + comparison);
 		    System.err.println(  " outcome:    "+ outcome);
 		    System.err.println(  " file left:  "+ args[0]);
 		    System.err.println(  " file right: "+ args[1]);
