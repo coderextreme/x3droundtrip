@@ -1,11 +1,7 @@
 #!/bin/sh
 
-export CANONICALIZERDIST=/c/Users/coderextreme/Documents/NetBeansProjects/x3d-code/www.web3d.org/x3d/tools/canonical/dist/lib/
-export CLASSPATH="xmlunit/xmlunit-core/target/classes;xmlunit/xmlunit-legacy/target/classes;xmlunit/xmlunit-matchers/target/classes;xmlunit/xmlunit-core/target/xmlunit-core-2.3.1-SNAPSHOT-tests.jar;xmlunit/xmlunit-core/target/xmlunit-core-2.3.1-SNAPSHOT.jar;xmlunit/xmlunit-legacy/target/xmlunit-legacy-2.3.1-SNAPSHOT-sumo.jar;xmlunit/xmlunit-legacy/target/xmlunit-legacy-2.3.1-SNAPSHOT-tests.jar;xmlunit/xmlunit-legacy/target/xmlunit-legacy-2.3.1-SNAPSHOT.jar;xmlunit/xmlunit-matchers/target/xmlunit-matchers-2.3.1-SNAPSHOT-tests.jar;xmlunit/xmlunit-matchers/target/xmlunit-matchers-2.3.1-SNAPSHOT.jar;."
+. ./environment
 javac Compare.java
-
-
-cat /dev/null > javadiffresults.txt
 
 echo "@1 is when two strings are different lengths" | tee -a diffresults.txt
 echo "@2 is when two strings are unequal (quoting in word, entities)" | tee -a diffresults.txt

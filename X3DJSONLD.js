@@ -27,6 +27,7 @@ if (typeof Browser === 'undefined') {
 
 function processURLs(localArray, path) {
 	var url;
+/*
 	// No longer need to split
 	for (url in localArray) {
 		if (localArray[url].indexOf("http://") === 0
@@ -52,23 +53,32 @@ function processURLs(localArray, path) {
 				}
 			}
 		}
+		// for server side
 		var h = localArray[url].lastIndexOf("#") ;
 		var hash = "";
 		if (h >= 0) {
 			hash = localArray[url].substring(h);
 			localArray[url] = localArray[url].substring(0, h);
 		}
+*/
+/*
 		var x3d = localArray[url].lastIndexOf(".x3d") ;
 		if (x3d === localArray[url].length - 4) {
-			localArray[url] = localArray[url].substring(0, x3d)+".json";
+			localArray[url] = localArray[url].substring(0, x3d)+".json" + hash;
 		}
+*/
+/*
 		var wrl = localArray[url].lastIndexOf(".wrl") ;
 		if (wrl === localArray[url].length - 4) {
-			localArray[url] = localArray[url].substring(0, wrl)+".json";
+			localArray[url] = localArray[url].substring(0, wrl)+".json" + hash;
 		}
-		localArray[url] = localArray[url]+hash;
+		var wrz = localArray[url].lastIndexOf(".wrz") ;
+		if (wrz === localArray[url].length - 4) {
+			localArray[url] = localArray[url].substring(0, wrz)+".json" + hash;
+		}
 			
         }
+*/
 	// console.error("Processed URLs", localArray.join(" "));
 	return localArray;
 }
@@ -77,8 +87,11 @@ if (typeof require === 'function') {
 	var fs = require("fs");
 	var http = require("http");
 	var https = require("https");
+	/*
+	var runAndSend = require("./runAndSend");
+	*/
 }
-
+	
 function loadURLs(loadpath, urls, loadedCallback) {
 	if (typeof urls !== 'undefined') {
 		urls = processURLs(urls, loadpath);
@@ -135,15 +148,26 @@ function loadURLs(loadpath, urls, loadedCallback) {
 						}
 					} else if (typeof fs !== 'undefined' && protocol.indexOf("http") !== 0) {
 						// should be async, but out of memory
-						if (fs.statSync(url).isFile()) {
-							// console.error("Loading FILE URL", url);
+						// console.error("Loading FILE URL", url);
+						var hash = url.indexOf("#");
+						if (hash > 0) {
+							url = url.substring(0, hash);
+						}
+						try {
 							var data = fs.readFileSync(url);
 							loadedCallback(data.toString(), url);
-						} else {
-							console.error("File doesn't exist or is not available,", url);
+						} catch (e) {
+							var filename = url;
+							filename = filename.substring(0, filename.lastIndexOf("."))+".x3d";
+							console.error("Did not convert "+filename);
+							/*
+							var json = runAndSend(filename);
+							data = JSON.stringify(json);
+							loadedCallback(data.toString(), filename);
+							*/
 						}
 					} else if (typeof $ !== 'undefined' && typeof $.get === 'function') {
-						// console.error("Loading Relative URL", url);
+						console.error("Loading Relative URL", url);
 						$.get(url, function(data) {
 							loadedCallback(data, url);
 						});
@@ -152,7 +176,7 @@ function loadURLs(loadpath, urls, loadedCallback) {
 					}
 				})(url);
 			} catch (e) {
-				console.error(e);
+			 	throw(e);
 			}
 		}
 	}
@@ -223,7 +247,7 @@ function CDATACreateFunction(document, element, str) {
 	element.appendChild(child);
 	*/
 	var domParser = new DOMParser();
-	var cdataStr = '<script> <![CDATA[ ' + str + ' ]]> </script>'; // has to be wrapped into an element
+	var cdataStr = '<script> <![CDATA[ ' + str.replace(/'([^'\r]*)\n([^']*)'/g, "'$1\\n$2'") + ' ]]> </script>'; // has to be wrapped into an element
 	var scriptDoc = domParser .parseFromString (cdataStr, 'application/xml');
 	var cdata = scriptDoc .children[0] .childNodes[1]; // space after script is childNode[0]
 	element .appendChild(cdata);
@@ -244,6 +268,7 @@ function ConvertObject(key, object, element, path, containerField) {
 				var child = document.createComment(CommentStringToXML(object[key][c]));
 				element.appendChild(child);
 			}
+			/*
 		} else if (key === 'Inline') {
 			var localArray = object[key]["@url"];
 			// console.error("Loading", localArray, "into", key);
@@ -264,6 +289,7 @@ function ConvertObject(key, object, element, path, containerField) {
 					element.appendChild(document.createTextNode("\n"));
 				}
 			});
+			*/
 		} else if (key === '#sourceText') {
 			CDATACreateFunction(document, element, object[key].join("\r\n")+"\r\n");
 		} else {
@@ -295,20 +321,24 @@ function ConvertObject(key, object, element, path, containerField) {
 }
 
 function CommentStringToXML(str) {
+	/*
 	str = str.replace(/[\u0080-\uFFFF]/g, 
 		function (v) {return '&#'+v.charCodeAt()+';';}
 	);
-	str = str.replace(/\\"/g, '"');
+	str = str.replace(/\\/g, "\\\\").replace(/\\"/g, '\\\"');
+	*/
 	return str;
 }
 
 function JSONStringToXML(str) {
+	/*
 	str = str.replace(/[\u0080-\uFFFF]/g, 
 		function (v) {return '&#'+v.charCodeAt()+';';}
 	);
 	// replace  \'s first
 	str = str.replace(/\\/g, '\\\\');
-	str = str.replace(/"/g, '\\"');
+	str = str.replace(/\\"/g, '\\\"');
+	*/
 	return str;
 }
 
@@ -402,6 +432,10 @@ function fixXML(xmlstr) {
 	// Fix CDATA sections
 	xmlstr = xmlstr.replace(/&lt;!\[CDATA\[/g, "<![CDATA[");
 	xmlstr = xmlstr.replace(/\]\]&gt;/g, "]]>");
+	xmlstr = xmlstr.replace(/[\u0080-\uFFFF]/g, 
+		function (v) {return '&#'+v.charCodeAt()+';';}
+	);
+	xmlstr = xmlstr.replace(/(\\)*&quot;/g, '\\\\&quot;');
 	do {
 		var xmlstr2 = xmlstr;
 		xmlstr = xmlstr2.replace(/(<!\[CDATA\[(.|\n)*)&lt;((.|\n)*\]\]>)/gi, "$1<$3");
