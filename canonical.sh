@@ -31,3 +31,7 @@ do
 		echo "No $DIRNAME/$ORIGINAL"
 	fi
 done
+egrep '^(=|C|@|M|<|>)' diffresults.txt > results.txt
+jar -cMf results.data.zip results.txt
+grep xmldiff results.txt| awk '{ print $2; print $3; }'| xargs jar -uMf results.data.zip
+echo output file is results.data.zip
