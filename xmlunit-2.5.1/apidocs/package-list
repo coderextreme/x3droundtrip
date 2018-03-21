@@ -1,0 +1,14 @@
+org.custommonkey.xmlunit
+org.custommonkey.xmlunit.examples
+org.custommonkey.xmlunit.exceptions
+org.custommonkey.xmlunit.jaxp13
+org.custommonkey.xmlunit.util
+org.xmlunit
+org.xmlunit.builder
+org.xmlunit.diff
+org.xmlunit.input
+org.xmlunit.matchers
+org.xmlunit.transform
+org.xmlunit.util
+org.xmlunit.validation
+org.xmlunit.xpath

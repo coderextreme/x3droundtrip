@@ -1,5 +1,5 @@
 {
-	"$schema": "http://json-schema.org/draft-04/schema#",
+	"$schema": "http://json-schema.org/draft-06/schema#",
 	"title": "JSON Schema X3D V3.3",
 	"description": "Experimental JSON Schema for X3D V3.3 ",
 	"type": "object",
@@ -58,7 +58,7 @@
 					"minItems": 1,
 					"items": {
 						"type": "string",
-						"format": "uri"
+						"format": "uri-reference"
 					}
 				}
 			},
@@ -135,24 +135,19 @@
 				},
 				"@endAngle": {
 					"type": "number",
-					"minimum": -6.2832,
-					"exclusiveMinimum": true,
-					"maximum": 6.2832,
-					"exclusiveMaximum": true,
+					"exclusiveMinimum": -6.2832,
+					"exclusiveMaximum": 6.2832,
 					"default": 1.570796
 				},
 				"@radius": {
 					"type": "number",
-					"minimum": 0,
-					"exclusiveMinimum": true,
+					"exclusiveMinimum": 0,
 					"default": 1
 				},
 				"@startAngle": {
 					"type": "number",
-					"minimum": -6.2832,
-					"exclusiveMinimum": true,
-					"maximum": 6.2832,
-					"exclusiveMaximum": true,
+					"exclusiveMinimum": -6.2832,
+					"exclusiveMaximum": 6.2832,
 					"default": 0
 				},
 				"-metadata": {
@@ -186,24 +181,19 @@
 				},
 				"@endAngle": {
 					"type": "number",
-					"minimum": -6.2832,
-					"exclusiveMinimum": true,
-					"maximum": 6.2832,
-					"exclusiveMaximum": true,
+					"exclusiveMinimum": -6.2832,
+					"exclusiveMaximum": 6.2832,
 					"default": 1.570796
 				},
 				"@radius": {
 					"type": "number",
-					"minimum": 0,
-					"exclusiveMinimum": true,
+					"exclusiveMinimum": 0,
 					"default": 1
 				},
 				"@startAngle": {
 					"type": "number",
-					"minimum": -6.2832,
-					"exclusiveMinimum": true,
-					"maximum": 6.2832,
-					"exclusiveMaximum": true,
+					"exclusiveMinimum": -6.2832,
+					"exclusiveMaximum": 6.2832,
 					"default": 0
 				},
 				"@solid": {
@@ -244,8 +234,7 @@
 				},
 				"@pitch": {
 					"type": "number",
-					"minimum": 0,
-					"exclusiveMinimum": true,
+					"exclusiveMinimum": 0,
 					"default": 1
 				},
 				"@resumeTime": {
@@ -264,7 +253,7 @@
 					"type": "array",
 					"items": {
 						"type": "string",
-						"format": "uri"
+						"format": "uri-reference"
 					}
 				},
 				"-metadata": {
@@ -293,7 +282,7 @@
 					"minItems": 1,
 					"items": {
 						"type": "string",
-						"format": "uri"
+						"format": "uri-reference"
 					}
 				},
 				"@bottomUrl": {
@@ -301,7 +290,7 @@
 					"minItems": 1,
 					"items": {
 						"type": "string",
-						"format": "uri"
+						"format": "uri-reference"
 					}
 				},
 				"@frontUrl": {
@@ -309,7 +298,7 @@
 					"minItems": 1,
 					"items": {
 						"type": "string",
-						"format": "uri"
+						"format": "uri-reference"
 					}
 				},
 				"@groundAngle": {
@@ -335,7 +324,7 @@
 					"minItems": 1,
 					"items": {
 						"type": "string",
-						"format": "uri"
+						"format": "uri-reference"
 					}
 				},
 				"@rightUrl": {
@@ -343,7 +332,7 @@
 					"minItems": 1,
 					"items": {
 						"type": "string",
-						"format": "uri"
+						"format": "uri-reference"
 					}
 				},
 				"@skyAngle": {
@@ -369,7 +358,7 @@
 					"minItems": 1,
 					"items": {
 						"type": "string",
-						"format": "uri"
+						"format": "uri-reference"
 					}
 				},
 				"@transparency": {
@@ -1080,8 +1069,7 @@
 				},
 				"@radius": {
 					"type": "number",
-					"minimum": 0,
-					"exclusiveMinimum": true,
+					"exclusiveMinimum": 0,
 					"default": 1
 				},
 				"-metadata": {
@@ -1813,14 +1801,12 @@
 				},
 				"@bottomRadius": {
 					"type": "number",
-					"minimum": 0,
-					"exclusiveMinimum": true,
+					"exclusiveMinimum": 0,
 					"default": 1
 				},
 				"@height": {
 					"type": "number",
-					"minimum": 0,
-					"exclusiveMinimum": true,
+					"exclusiveMinimum": 0,
 					"default": 2
 				},
 				"@side": {
@@ -2382,14 +2368,12 @@
 				},
 				"@height": {
 					"type": "number",
-					"minimum": 0,
-					"exclusiveMinimum": true,
+					"exclusiveMinimum": 0,
 					"default": 2
 				},
 				"@radius": {
 					"type": "number",
-					"minimum": 0,
-					"exclusiveMinimum": true,
+					"exclusiveMinimum": 0,
 					"default": 1
 				},
 				"@side": {
@@ -2474,18 +2458,14 @@
 				},
 				"@maxAngle": {
 					"type": "number",
-					"minimum": -6.2832,
-					"exclusiveMinimum": true,
-					"maximum": 6.2832,
-					"exclusiveMaximum": true,
+					"exclusiveMinimum": -6.2832,
+					"exclusiveMaximum": 6.2832,
 					"default": -1
 				},
 				"@minAngle": {
 					"type": "number",
-					"minimum": -6.2832,
-					"exclusiveMinimum": true,
-					"maximum": 6.2832,
-					"exclusiveMaximum": true,
+					"exclusiveMinimum": -6.2832,
+					"exclusiveMaximum": 6.2832,
 					"default": 0
 				},
 				"@offset": {
@@ -2678,7 +2658,7 @@
 					"minItems": 1,
 					"items": {
 						"type": "string",
-						"format": "uri"
+						"format": "uri-reference"
 					}
 				},
 				"-metadata": {
@@ -2709,8 +2689,7 @@
 				},
 				"@outerRadius": {
 					"type": "number",
-					"minimum": 0,
-					"exclusiveMinimum": true,
+					"exclusiveMinimum": 0,
 					"default": 1
 				},
 				"@solid": {
@@ -2822,10 +2801,8 @@
 				},
 				"@maxAngle1": {
 					"type": "number",
-					"minimum": -3.1416,
-					"exclusiveMinimum": true,
-					"maximum": 3.1416,
-					"exclusiveMaximum": true,
+					"exclusiveMinimum": -3.1416,
+					"exclusiveMaximum": 3.1416,
 					"default": 3.141592653
 				},
 				"@maxTorque1": {
@@ -2838,10 +2815,8 @@
 				},
 				"@minAngle1": {
 					"type": "number",
-					"minimum": -3.1416,
-					"exclusiveMinimum": true,
-					"maximum": 3.1416,
-					"exclusiveMaximum": true,
+					"exclusiveMinimum": -3.1416,
+					"exclusiveMaximum": 3.1416,
 					"default": -3.141592653
 				},
 				"@stop1Bounce": {
@@ -3568,7 +3543,7 @@
 					"minItems": 1,
 					"items": {
 						"type": "string",
-						"format": "uri"
+						"format": "uri-reference"
 					}
 				},
 				"@appinfo": {
@@ -3955,8 +3930,7 @@
 				},
 				"@size": {
 					"type": "number",
-					"minimum": 0,
-					"exclusiveMinimum": true,
+					"exclusiveMinimum": 0,
 					"default": 1
 				},
 				"@spacing": {
@@ -4047,8 +4021,7 @@
 				},
 				"@size": {
 					"type": "integer",
-					"minimum": 0,
-					"exclusiveMinimum": true,
+					"exclusiveMinimum": 0,
 					"default": 128
 				},
 				"@update": {
@@ -4168,8 +4141,7 @@
 				},
 				"@xSpacing": {
 					"type": "number",
-					"minimum": 0,
-					"exclusiveMinimum": true,
+					"exclusiveMinimum": 0,
 					"default": 1
 				},
 				"@yScale": {
@@ -4184,8 +4156,7 @@
 				},
 				"@zSpacing": {
 					"type": "number",
-					"minimum": 0,
-					"exclusiveMinimum": true,
+					"exclusiveMinimum": 0,
 					"default": 1
 				},
 				"-color": {
@@ -4295,7 +4266,7 @@
 					"minItems": 1,
 					"items": {
 						"type": "string",
-						"format": "uri"
+						"format": "uri-reference"
 					}
 				},
 				"@child2Url": {
@@ -4303,7 +4274,7 @@
 					"minItems": 1,
 					"items": {
 						"type": "string",
-						"format": "uri"
+						"format": "uri-reference"
 					}
 				},
 				"@child3Url": {
@@ -4311,7 +4282,7 @@
 					"minItems": 1,
 					"items": {
 						"type": "string",
-						"format": "uri"
+						"format": "uri-reference"
 					}
 				},
 				"@child4Url": {
@@ -4319,7 +4290,7 @@
 					"minItems": 1,
 					"items": {
 						"type": "string",
-						"format": "uri"
+						"format": "uri-reference"
 					}
 				},
 				"@geoSystem": {
@@ -4335,7 +4306,7 @@
 					"minItems": 1,
 					"items": {
 						"type": "string",
-						"format": "uri"
+						"format": "uri-reference"
 					}
 				},
 				"-children": {
@@ -4377,7 +4348,7 @@
 					"minItems": 1,
 					"items": {
 						"type": "string",
-						"format": "uri"
+						"format": "uri-reference"
 					}
 				},
 				"-data": {
@@ -4651,8 +4622,7 @@
 					"maxItems": 3,
 					"items": {
 						"type": "number",
-						"minimum": 0,
-						"exclusiveMinimum": true,
+						"exclusiveMinimum": 0,
 						"default": 1
 					}
 				},
@@ -4703,10 +4673,8 @@
 				},
 				"@fieldOfView": {
 					"type": "number",
-					"minimum": 0,
-					"exclusiveMinimum": true,
-					"maximum": 3.1416,
-					"exclusiveMaximum": true,
+					"exclusiveMinimum": 0,
+					"exclusiveMaximum": 3.1416,
 					"default": 0.7854
 				},
 				"@geoSystem": {
@@ -4888,8 +4856,7 @@
 					"maxItems": 3,
 					"items": {
 						"type": "number",
-						"minimum": 0,
-						"exclusiveMinimum": true
+						"exclusiveMinimum": 0
 					}
 				},
 				"@scaleOrientation": {
@@ -5162,8 +5129,7 @@
 					"maxItems": 3,
 					"items": {
 						"type": "number",
-						"minimum": 0,
-						"exclusiveMinimum": true,
+						"exclusiveMinimum": 0,
 						"default": 1
 					}
 				},
@@ -5205,7 +5171,7 @@
 					"minItems": 1,
 					"items": {
 						"type": "string",
-						"format": "uri"
+						"format": "uri-reference"
 					}
 				},
 				"-metadata": {
@@ -5245,7 +5211,7 @@
 					"minItems": 1,
 					"items": {
 						"type": "string",
-						"format": "uri"
+						"format": "uri-reference"
 					}
 				},
 				"-metadata": {
@@ -5289,7 +5255,7 @@
 					"minItems": 1,
 					"items": {
 						"type": "string",
-						"format": "uri"
+						"format": "uri-reference"
 					}
 				},
 				"-metadata": {
@@ -5602,7 +5568,7 @@
 			},
 			"additionalProperties": false
 		},
-		"IndexedTrangleSet": {
+		"IndexedTriangleSet": {
 			"type": "object",
 			"properties": {
 				"@DEF": {
@@ -5760,7 +5726,7 @@
 					"minItems": 1,
 					"items": {
 						"type": "string",
-						"format": "uri"
+						"format": "uri-reference"
 					}
 				},
 				"-metadata": {
@@ -5905,8 +5871,7 @@
 					"maxItems": 3,
 					"items": {
 						"type": "number",
-						"minimum": 0,
-						"exclusiveMinimum": true,
+						"exclusiveMinimum": 0,
 						"default": 1
 					}
 				},
@@ -6326,8 +6291,7 @@
 				},
 				"@linetype": {
 					"type": "integer",
-					"minimum": 1,
-					"exclusiveMinimum": true,
+					"exclusiveMinimum": 1,
 					"default": 1
 				},
 				"@linewidthScaleFactor": {
@@ -6703,6 +6667,9 @@
 					"$ref": "#/definitions/-commentRoute"
 				}
 			},
+			"required": [
+				"@name"
+			],
 			"additionalProperties": false
 		},
 		"MetadataDouble": {
@@ -6737,6 +6704,9 @@
 					"$ref": "#/definitions/-commentRoute"
 				}
 			},
+			"required": [
+				"@name"
+			],
 			"additionalProperties": false
 		},
 		"MetadataFloat": {
@@ -6771,6 +6741,9 @@
 					"$ref": "#/definitions/-commentRoute"
 				}
 			},
+			"required": [
+				"@name"
+			],
 			"additionalProperties": false
 		},
 		"MetadataInteger": {
@@ -6805,6 +6778,9 @@
 					"$ref": "#/definitions/-commentRoute"
 				}
 			},
+			"required": [
+				"@name"
+			],
 			"additionalProperties": false
 		},
 		"MetadataSet": {
@@ -6863,6 +6839,9 @@
 					"$ref": "#/definitions/-commentRoute"
 				}
 			},
+			"required": [
+				"@name"
+			],
 			"additionalProperties": false
 		},
 		"MetadataString": {
@@ -6897,6 +6876,9 @@
 					"$ref": "#/definitions/-commentRoute"
 				}
 			},
+			"required": [
+				"@name"
+			],
 			"additionalProperties": false
 		},
 		"MotorJoint": {
@@ -6917,10 +6899,8 @@
 				},
 				"@axis1Angle": {
 					"type": "number",
-					"minimum": -3.1416,
-					"exclusiveMinimum": true,
-					"maximum": 3.1416,
-					"exclusiveMaximum": true,
+					"exclusiveMinimum": -3.1416,
+					"exclusiveMaximum": 3.1416,
 					"default": 0
 				},
 				"@axis1Torque": {
@@ -6929,10 +6909,8 @@
 				},
 				"@axis2Angle": {
 					"type": "number",
-					"minimum": -3.1416,
-					"exclusiveMinimum": true,
-					"maximum": 3.1416,
-					"exclusiveMaximum": true,
+					"exclusiveMinimum": -3.1416,
+					"exclusiveMaximum": 3.1416,
 					"default": 0
 				},
 				"@axis2Torque": {
@@ -6941,10 +6919,8 @@
 				},
 				"@axis3Angle": {
 					"type": "number",
-					"minimum": -3.1416,
-					"exclusiveMinimum": true,
-					"maximum": 3.1416,
-					"exclusiveMaximum": true,
+					"exclusiveMinimum": -3.1416,
+					"exclusiveMaximum": 3.1416,
 					"default": 0
 				},
 				"@axis3Torque": {
@@ -7076,8 +7052,7 @@
 				},
 				"@pitch": {
 					"type": "number",
-					"minimum": 0,
-					"exclusiveMinimum": true,
+					"exclusiveMinimum": 0,
 					"default": 1
 				},
 				"@repeatS": {
@@ -7109,7 +7084,7 @@
 					"minItems": 1,
 					"items": {
 						"type": "string",
-						"format": "uri"
+						"format": "uri-reference"
 					}
 				},
 				"-metadata": {
@@ -7462,8 +7437,7 @@
 					"minItems": 1,
 					"items": {
 						"type": "number",
-						"minimum": 0,
-						"exclusiveMinimum": true
+						"exclusiveMinimum": 0
 					}
 				},
 				"-controlPoint": {
@@ -7522,8 +7496,7 @@
 					"minItems": 1,
 					"items": {
 						"type": "number",
-						"minimum": 0,
-						"exclusiveMinimum": true
+						"exclusiveMinimum": 0
 					}
 				},
 				"-metadata": {
@@ -7649,8 +7622,7 @@
 					"minItems": 1,
 					"items": {
 						"type": "number",
-						"minimum": 0,
-						"exclusiveMinimum": true
+						"exclusiveMinimum": 0
 					}
 				},
 				"-controlPoint": {
@@ -7737,8 +7709,7 @@
 				},
 				"@tesselationScale": {
 					"type": "number",
-					"minimum": 0,
-					"exclusiveMinimum": true,
+					"exclusiveMinimum": 0,
 					"default": 1
 				},
 				"-geometry": {
@@ -8028,8 +7999,7 @@
 					"minItems": 1,
 					"items": {
 						"type": "number",
-						"minimum": 0,
-						"exclusiveMinimum": true
+						"exclusiveMinimum": 0
 					}
 				},
 				"-controlPoint": {
@@ -8295,7 +8265,7 @@
 					"minItems": 1,
 					"items": {
 						"type": "string",
-						"format": "uri"
+						"format": "uri-reference"
 					}
 				},
 				"#sourceText": {
@@ -9577,9 +9547,6 @@
 					"$ref": "#/definitions/-metadata"
 				}
 			},
-			"required": [
-				"@name"
-			],
 			"additionalProperties": false
 		},
 		"ProtoInterface": {
@@ -9870,8 +9837,7 @@
 					"maxItems": 2,
 					"items": {
 						"type": "number",
-						"minimum": 0,
-						"exclusiveMinimum": true,
+						"exclusiveMinimum": 0,
 						"default": 2
 					}
 				},
@@ -10008,8 +9974,7 @@
 				},
 				"@mass": {
 					"type": "number",
-					"minimum": 0,
-					"exclusiveMinimum": true,
+					"exclusiveMinimum": 0,
 					"default": 1
 				},
 				"@orientation": {
@@ -10732,8 +10697,7 @@
 				},
 				"@pointSize": {
 					"type": "number",
-					"minimum": 0,
-					"exclusiveMinimum": true,
+					"exclusiveMinimum": 0,
 					"default": 12
 				},
 				"@spacing": {
@@ -10826,7 +10790,7 @@
 					"minItems": 1,
 					"items": {
 						"type": "string",
-						"format": "uri"
+						"format": "uri-reference"
 					}
 				},
 				"#sourceText": {
@@ -10874,8 +10838,7 @@
 					"maxItems": 3,
 					"items": {
 						"type": "number",
-						"minimum": 0,
-						"exclusiveMinimum": true,
+						"exclusiveMinimum": 0,
 						"default": 1
 					}
 				},
@@ -10967,7 +10930,7 @@
 					"type": "array",
 					"items": {
 						"type": "string",
-						"format": "uri"
+						"format": "uri-reference"
 					}
 				},
 				"#sourceText": {
@@ -11006,7 +10969,7 @@
 					"type": "array",
 					"items": {
 						"type": "string",
-						"format": "uri"
+						"format": "uri-reference"
 					}
 				},
 				"#sourceText": {
@@ -11333,18 +11296,14 @@
 				},
 				"@maxAngle": {
 					"type": "number",
-					"minimum": -3.1416,
-					"exclusiveMinimum": true,
-					"maximum": 3.1416,
-					"exclusiveMaximum": true,
+					"exclusiveMinimum": -3.1416,
+					"exclusiveMaximum": 3.1416,
 					"default": 3.141592653
 				},
 				"@minAngle": {
 					"type": "number",
-					"minimum": -3.1416,
-					"exclusiveMinimum": true,
-					"maximum": 3.1416,
-					"exclusiveMaximum": true,
+					"exclusiveMinimum": -3.1416,
+					"exclusiveMaximum": 3.1416,
 					"default": -3.141592653
 				},
 				"@stopBounce": {
@@ -11575,8 +11534,7 @@
 				},
 				"@radius": {
 					"type": "number",
-					"minimum": 0,
-					"exclusiveMinimum": true,
+					"exclusiveMinimum": 0,
 					"default": 1
 				},
 				"@solid": {
@@ -11847,8 +11805,7 @@
 				},
 				"@beamWidth": {
 					"type": "number",
-					"minimum": 0,
-					"exclusiveMinimum": true,
+					"exclusiveMinimum": 0,
 					"maximum": 1.5708,
 					"default": 0.7854
 				},
@@ -11865,8 +11822,7 @@
 				},
 				"@cutOffAngle": {
 					"type": "number",
-					"minimum": 0,
-					"exclusiveMinimum": true,
+					"exclusiveMinimum": 0,
 					"maximum": 1.5708,
 					"default": 1.570796
 				},
@@ -12749,8 +12705,7 @@
 				},
 				"@cycleInterval": {
 					"type": "number",
-					"minimum": 0,
-					"exclusiveMinimum": true,
+					"exclusiveMinimum": 0,
 					"default": 1
 				},
 				"@enabled": {
@@ -14139,8 +14094,7 @@
 					"maxItems": 3,
 					"items": {
 						"type": "number",
-						"minimum": 0,
-						"exclusiveMinimum": true,
+						"exclusiveMinimum": 0,
 						"default": 1
 					}
 				},
@@ -14699,6 +14653,55 @@
 			"oneOf": [
 				{
 					"type": "array",
+					"minItems": 2,
+					"maxItems": 3,
+					"items": [
+						{
+							"type": "string",
+							"enum": [
+								"GD",
+								"GDC"
+							],
+							"default": "GD"
+						},
+						{
+							"type": "string",
+							"enum": [
+								"WGS84"
+							]
+						}
+					],
+					"additionalItems": {
+						"type": "string",
+						"enum": [
+							"AM",
+							"AN",
+							"BN",
+							"BR",
+							"CC",
+							"CD",
+							"EA",
+							"EB",
+							"EC",
+							"ED",
+							"EE",
+							"EF",
+							"FA",
+							"HE",
+							"HO",
+							"ID",
+							"IN",
+							"KA",
+							"RF",
+							"SA",
+							"WD",
+							"WE"
+						],
+						"default": "WE"
+					}
+				},
+				{
+					"type": "array",
 					"minItems": 1,
 					"maxItems": 3,
 					"items": [
@@ -14748,7 +14751,647 @@
 				},
 				{
 					"type": "array",
-					"minItems": 1,
+					"minItems": 4,
+					"maxItems": 5,
+					"items": [
+						{
+							"type": "string",
+							"enum": [
+								"UTM"
+							],
+							"default": "GD"
+						},
+						{
+							"type": "string",
+							"enum": [
+								"Z01",
+								"Z1",
+								"Z02",
+								"Z2",
+								"Z03",
+								"Z3",
+								"Z04",
+								"Z4",
+								"Z05",
+								"Z5",
+								"Z06",
+								"Z6",
+								"Z07",
+								"Z7",
+								"Z08",
+								"Z8",
+								"Z09",
+								"Z9",
+								"Z10",
+								"Z11",
+								"Z12",
+								"Z13",
+								"Z14",
+								"Z15",
+								"Z16",
+								"Z17",
+								"Z18",
+								"Z19",
+								"Z20",
+								"Z21",
+								"Z22",
+								"Z23",
+								"Z24",
+								"Z25",
+								"Z26",
+								"Z27",
+								"Z28",
+								"Z29",
+								"Z30",
+								"Z31",
+								"Z32",
+								"Z33",
+								"Z34",
+								"Z35",
+								"Z36",
+								"Z37",
+								"Z38",
+								"Z39",
+								"Z40",
+								"Z41",
+								"Z42",
+								"Z43",
+								"Z44",
+								"Z45",
+								"Z46",
+								"Z47",
+								"Z48",
+								"Z49",
+								"Z50",
+								"Z51",
+								"Z52",
+								"Z53",
+								"Z54",
+								"Z55",
+								"Z56",
+								"Z57",
+								"Z58",
+								"Z59",
+								"Z60"
+							],
+							"default": "WE"
+						},
+						{
+							"type": "string",
+							"enum": [
+								"AM",
+								"AN",
+								"BN",
+								"BR",
+								"CC",
+								"CD",
+								"EA",
+								"EB",
+								"EC",
+								"ED",
+								"EE",
+								"EF",
+								"FA",
+								"HE",
+								"HO",
+								"ID",
+								"IN",
+								"KA",
+								"RF",
+								"SA",
+								"WD",
+								"WE"
+							]
+						},
+						{
+							"type": "string",
+							"enum": [
+								"WGS84"
+							]
+						}
+					],
+					"additionalItems": {
+						"type": "string",
+						"enum": [
+							"S"
+						]
+					}
+				},
+				{
+					"type": "array",
+					"minItems": 3,
+					"maxItems": 5,
+					"items": [
+						{
+							"type": "string",
+							"enum": [
+								"UTM"
+							],
+							"default": "GD"
+						},
+						{
+							"type": "string",
+							"enum": [
+								"Z01",
+								"Z1",
+								"Z02",
+								"Z2",
+								"Z03",
+								"Z3",
+								"Z04",
+								"Z4",
+								"Z05",
+								"Z5",
+								"Z06",
+								"Z6",
+								"Z07",
+								"Z7",
+								"Z08",
+								"Z8",
+								"Z09",
+								"Z9",
+								"Z10",
+								"Z11",
+								"Z12",
+								"Z13",
+								"Z14",
+								"Z15",
+								"Z16",
+								"Z17",
+								"Z18",
+								"Z19",
+								"Z20",
+								"Z21",
+								"Z22",
+								"Z23",
+								"Z24",
+								"Z25",
+								"Z26",
+								"Z27",
+								"Z28",
+								"Z29",
+								"Z30",
+								"Z31",
+								"Z32",
+								"Z33",
+								"Z34",
+								"Z35",
+								"Z36",
+								"Z37",
+								"Z38",
+								"Z39",
+								"Z40",
+								"Z41",
+								"Z42",
+								"Z43",
+								"Z44",
+								"Z45",
+								"Z46",
+								"Z47",
+								"Z48",
+								"Z49",
+								"Z50",
+								"Z51",
+								"Z52",
+								"Z53",
+								"Z54",
+								"Z55",
+								"Z56",
+								"Z57",
+								"Z58",
+								"Z59",
+								"Z60"
+							],
+							"default": "WE"
+						},
+						{
+							"type": "string",
+							"enum": [
+								"AM",
+								"AN",
+								"BN",
+								"BR",
+								"CC",
+								"CD",
+								"EA",
+								"EB",
+								"EC",
+								"ED",
+								"EE",
+								"EF",
+								"FA",
+								"HE",
+								"HO",
+								"ID",
+								"IN",
+								"KA",
+								"RF",
+								"SA",
+								"WD",
+								"WE"
+							]
+						},
+						{
+							"type": "string",
+							"enum": [
+								"S"
+							]
+						}
+					],
+					"additionalItems": {
+						"type": "string",
+						"enum": [
+							"WGS84"
+						]
+					}
+				},
+				{
+					"type": "array",
+					"minItems": 4,
+					"maxItems": 5,
+					"items": [
+						{
+							"type": "string",
+							"enum": [
+								"UTM"
+							],
+							"default": "GD"
+						},
+						{
+							"type": "string",
+							"enum": [
+								"Z01",
+								"Z1",
+								"Z02",
+								"Z2",
+								"Z03",
+								"Z3",
+								"Z04",
+								"Z4",
+								"Z05",
+								"Z5",
+								"Z06",
+								"Z6",
+								"Z07",
+								"Z7",
+								"Z08",
+								"Z8",
+								"Z09",
+								"Z9",
+								"Z10",
+								"Z11",
+								"Z12",
+								"Z13",
+								"Z14",
+								"Z15",
+								"Z16",
+								"Z17",
+								"Z18",
+								"Z19",
+								"Z20",
+								"Z21",
+								"Z22",
+								"Z23",
+								"Z24",
+								"Z25",
+								"Z26",
+								"Z27",
+								"Z28",
+								"Z29",
+								"Z30",
+								"Z31",
+								"Z32",
+								"Z33",
+								"Z34",
+								"Z35",
+								"Z36",
+								"Z37",
+								"Z38",
+								"Z39",
+								"Z40",
+								"Z41",
+								"Z42",
+								"Z43",
+								"Z44",
+								"Z45",
+								"Z46",
+								"Z47",
+								"Z48",
+								"Z49",
+								"Z50",
+								"Z51",
+								"Z52",
+								"Z53",
+								"Z54",
+								"Z55",
+								"Z56",
+								"Z57",
+								"Z58",
+								"Z59",
+								"Z60"
+							],
+							"default": "WE"
+						},
+						{
+							"type": "string",
+							"enum": [
+								"WGS84"
+							]
+						},
+						{
+							"type": "string",
+							"enum": [
+								"AM",
+								"AN",
+								"BN",
+								"BR",
+								"CC",
+								"CD",
+								"EA",
+								"EB",
+								"EC",
+								"ED",
+								"EE",
+								"EF",
+								"FA",
+								"HE",
+								"HO",
+								"ID",
+								"IN",
+								"KA",
+								"RF",
+								"SA",
+								"WD",
+								"WE"
+							]
+						}
+					],
+					"additionalItems": {
+						"type": "string",
+						"enum": [
+							"S"
+						]
+					}
+				},
+				{
+					"type": "array",
+					"minItems": 3,
+					"maxItems": 5,
+					"items": [
+						{
+							"type": "string",
+							"enum": [
+								"UTM"
+							],
+							"default": "GD"
+						},
+						{
+							"type": "string",
+							"enum": [
+								"Z01",
+								"Z1",
+								"Z02",
+								"Z2",
+								"Z03",
+								"Z3",
+								"Z04",
+								"Z4",
+								"Z05",
+								"Z5",
+								"Z06",
+								"Z6",
+								"Z07",
+								"Z7",
+								"Z08",
+								"Z8",
+								"Z09",
+								"Z9",
+								"Z10",
+								"Z11",
+								"Z12",
+								"Z13",
+								"Z14",
+								"Z15",
+								"Z16",
+								"Z17",
+								"Z18",
+								"Z19",
+								"Z20",
+								"Z21",
+								"Z22",
+								"Z23",
+								"Z24",
+								"Z25",
+								"Z26",
+								"Z27",
+								"Z28",
+								"Z29",
+								"Z30",
+								"Z31",
+								"Z32",
+								"Z33",
+								"Z34",
+								"Z35",
+								"Z36",
+								"Z37",
+								"Z38",
+								"Z39",
+								"Z40",
+								"Z41",
+								"Z42",
+								"Z43",
+								"Z44",
+								"Z45",
+								"Z46",
+								"Z47",
+								"Z48",
+								"Z49",
+								"Z50",
+								"Z51",
+								"Z52",
+								"Z53",
+								"Z54",
+								"Z55",
+								"Z56",
+								"Z57",
+								"Z58",
+								"Z59",
+								"Z60"
+							],
+							"default": "WE"
+						},
+						{
+							"type": "string",
+							"enum": [
+								"WGS84"
+							]
+						},
+						{
+							"type": "string",
+							"enum": [
+								"S"
+							]
+						}
+					],
+					"additionalItems": {
+						"type": "string",
+						"enum": [
+							"AM",
+							"AN",
+							"BN",
+							"BR",
+							"CC",
+							"CD",
+							"EA",
+							"EB",
+							"EC",
+							"ED",
+							"EE",
+							"EF",
+							"FA",
+							"HE",
+							"HO",
+							"ID",
+							"IN",
+							"KA",
+							"RF",
+							"SA",
+							"WD",
+							"WE"
+						]
+					}
+				},
+				{
+					"type": "array",
+					"minItems": 4,
+					"maxItems": 5,
+					"items": [
+						{
+							"type": "string",
+							"enum": [
+								"UTM"
+							],
+							"default": "GD"
+						},
+						{
+							"type": "string",
+							"enum": [
+								"Z01",
+								"Z1",
+								"Z02",
+								"Z2",
+								"Z03",
+								"Z3",
+								"Z04",
+								"Z4",
+								"Z05",
+								"Z5",
+								"Z06",
+								"Z6",
+								"Z07",
+								"Z7",
+								"Z08",
+								"Z8",
+								"Z09",
+								"Z9",
+								"Z10",
+								"Z11",
+								"Z12",
+								"Z13",
+								"Z14",
+								"Z15",
+								"Z16",
+								"Z17",
+								"Z18",
+								"Z19",
+								"Z20",
+								"Z21",
+								"Z22",
+								"Z23",
+								"Z24",
+								"Z25",
+								"Z26",
+								"Z27",
+								"Z28",
+								"Z29",
+								"Z30",
+								"Z31",
+								"Z32",
+								"Z33",
+								"Z34",
+								"Z35",
+								"Z36",
+								"Z37",
+								"Z38",
+								"Z39",
+								"Z40",
+								"Z41",
+								"Z42",
+								"Z43",
+								"Z44",
+								"Z45",
+								"Z46",
+								"Z47",
+								"Z48",
+								"Z49",
+								"Z50",
+								"Z51",
+								"Z52",
+								"Z53",
+								"Z54",
+								"Z55",
+								"Z56",
+								"Z57",
+								"Z58",
+								"Z59",
+								"Z60"
+							],
+							"default": "WE"
+						},
+						{
+							"type": "string",
+							"enum": [
+								"S"
+							]
+						},
+						{
+							"type": "string",
+							"enum": [
+								"WGS84"
+							]
+						}
+					],
+					"additionalItems": {
+						"type": "string",
+						"enum": [
+							"AM",
+							"AN",
+							"BN",
+							"BR",
+							"CC",
+							"CD",
+							"EA",
+							"EB",
+							"EC",
+							"ED",
+							"EE",
+							"EF",
+							"FA",
+							"HE",
+							"HO",
+							"ID",
+							"IN",
+							"KA",
+							"RF",
+							"SA",
+							"WD",
+							"WE"
+						]
+					}
+				},
+				{
+					"type": "array",
+					"minItems": 2,
 					"maxItems": 5,
 					"items": [
 						{
@@ -14884,7 +15527,8 @@
 							"enum": [
 								"GC",
 								"GCC"
-							]
+							],
+							"default": "GD"
 						}
 					],
 					"additionalItems": false
@@ -15377,7 +16021,7 @@
 						"$ref": "#/definitions/IndexedTriangleFanSet"
 					},
 					"IndexedTriangleSet": {
-						"$ref": "#/definitions/IndexedTrangleSet"
+						"$ref": "#/definitions/IndexedTriangleSet"
 					},
 					"IndexedTriangleStripSet": {
 						"$ref": "#/definitions/IndexedTriangleStripSet"
@@ -16900,7 +17544,7 @@
 					"$ref": "#/definitions/IndexedTriangleFanSet"
 				},
 				"IndexedTriangleSet": {
-					"$ref": "#/definitions/IndexedTrangleSet"
+					"$ref": "#/definitions/IndexedTriangleSet"
 				},
 				"IndexedTriangleStripSet": {
 					"$ref": "#/definitions/IndexedTriangleStripSet"

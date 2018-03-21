@@ -3,6 +3,8 @@
 var parseString = require('xml2js').parseString;
 var fs = require('fs');
 
+var program = process.argv[1];
+
 process.argv.shift();
 process.argv.shift();
 
@@ -28,7 +30,7 @@ function compare(obj1, p1, obj2, p2) {
 		} else if (obj1.indexOf(" ") >= 0 || obj2.indexOf(" ") >= 0) {
 			var spl1 = obj1.split(/[ \t\n\r]+/);
 			var spl2 = obj2.split(/[ \t\n\r]+/);
-			//console.log("array1", spl1);
+			//console.error("array1", spl1);
 			if (spl1.length === spl2.length) {
 				for (var i = 0; i < spl1.length; i++) {
 					if (myTrim(spl1[i]) != myTrim(spl2[i])) { 
@@ -36,12 +38,12 @@ function compare(obj1, p1, obj2, p2) {
 						var p2key = p2+'/'+i;
 						var dsp1 = spl1[i].split(/[ \t\n\r]+/);
 						var dsp2 = spl2[i].split(/[ \t\n\r]+/);
-						// console.log("array2", dsp1);
+						// console.error("array2", dsp1);
 						for (var j = 0; j  < dsp1.length; j++) {
 							var dsp1key = p1key+'/'+j;
 							var dsp2key = p2key+'/'+j;
-							let ret;
-							let s;
+							var ret;
+							var s;
 							[ ret, s ] = compare(dsp1[j], p1key+"/"+j, dsp2[j], p2key+"/"+j);
 							str += s;
 							if (ret === false) {
@@ -80,8 +82,8 @@ function compare(obj1, p1, obj2, p2) {
 			var p2key = p2+'/'+key;
 			if (typeof obj2[key] !== 'undefined') {
 				// both have key
-				let ret;
-				let s;
+				var ret;
+				var s;
 				if (arrayKeys[key]) {
 					[ ret, s ] = compare(obj1[key].split(/[ \t\n\r]+/), p1key, obj2[key].split(/[ \t\n\r]+/), p2key);
 				} else {
@@ -139,19 +141,19 @@ try {
 		if (err) throw "RIGHT FILE "+err;
 		glob(files[0], function(err, filesglobs) {
 			if (err) {
-				console.log(err);
+				console.error(err);
 			}
 			filesglobs.forEach(function(file) {
 				var left = fs.readFileSync(file);
 				parseString(left, function(err, resultleft) {
 					if (err) throw "LEFT FILE "+err;
-					let ret;
-					let str;
+					var ret;
+					var str;
 					[ ret, str ] = compare(resultleft, '', resultright, '');
 					if (!ret) {
 						try {
 							console.log("================================================================================");
-							console.log("xmldiff.js", files[0], files[1]);
+							console.log(program, files[0], files[1]);
 							console.log(str);
 							console.log("Different");
 						} catch (e) {
@@ -168,5 +170,5 @@ try {
 		});
 	});
 } catch (e) {
-	console.log(e, files[0], files[1]);
+	console.error(e, files[0], files[1]);
 }

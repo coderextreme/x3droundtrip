@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
-    "xml2js": "*",
-    "node-mkdirp": "*",
-    "jsonlint": "*",
-    "ajv": "^4",
-    "xmldom": "*",
-    "glob": "*"
+    "xml2js": "0.4.19",
+    "node-mkdirp": "0.0.1",
+    "jsonlint": "1.6.3",
+    "ajv": "6.3.0",
+    "xmldom": "0.1.27",
+    "glob": "7.1.2"
   }
 }

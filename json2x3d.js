@@ -5,6 +5,10 @@
 process.argv.shift();
 process.argv.shift();
 
-var convertJSON = require('./convertJSON.js');
+var convertJSON = require('./convertJSON.js').convertJSON;
 
-convertJSON({'./DOMSerializer.js': "-roundtrip.x3d"});
+convertJSON([{ 
+	serializer : './DOMSerializer.js',
+	folder : "../../../",   // where to place output
+	extension : "-roundtrip.x3d",
+	}]);
