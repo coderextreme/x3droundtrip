@@ -1273,9 +1273,11 @@
               "type": "string"
             },
             "@duration_changed": {
+              "minimum": -1,
               "type": "number"
             },
             "@elapsedTime": {
+              "minimum": 0,
               "type": "number"
             },
             "@isActive": {
@@ -1551,10 +1553,6 @@
             "@forceOutput": {
               "type": "array",
               "items": {
-                "enum": [
-                  "ALL",
-                  "NONE"
-                ],
                 "default": "NONE",
                 "type": "string"
               }
@@ -3180,17 +3178,6 @@
             "@appliedParameters": {
               "type": "array",
               "items": {
-                "enum": [
-                  "BOUNCE",
-                  "USER_FRICTION",
-                  "FRICTION_COEFFICIENT-2",
-                  "ERROR_REDUCTION",
-                  "CONSTANT_FORCE",
-                  "SPEED-1",
-                  "SPEED-2",
-                  "SLIP-1",
-                  "SLIP-2"
-                ],
                 "default": "BOUNCE",
                 "type": "string"
               }
@@ -3550,26 +3537,38 @@
               "$ref": "#/definitions/-X3DMetadataObjectSFNode"
             },
             "@set_destination": {
+              "maximum": 1,
+              "minimum": 0,
               "type": "array",
               "minItems": 3,
               "maxItems": 3,
               "items": {
+                "maximum": 1,
+                "minimum": 0,
                 "type": "number"
               }
             },
             "@set_value": {
+              "maximum": 1,
+              "minimum": 0,
               "type": "array",
               "minItems": 3,
               "maxItems": 3,
               "items": {
+                "maximum": 1,
+                "minimum": 0,
                 "type": "number"
               }
             },
             "@value_changed": {
+              "maximum": 1,
+              "minimum": 0,
               "type": "array",
               "minItems": 3,
               "maxItems": 3,
               "items": {
+                "maximum": 1,
+                "minimum": 0,
                 "type": "number"
               }
             },
@@ -3660,18 +3659,26 @@
               "type": "integer"
             },
             "@set_destination": {
+              "maximum": 1,
+              "minimum": 0,
               "type": "array",
               "minItems": 3,
               "maxItems": 3,
               "items": {
+                "maximum": 1,
+                "minimum": 0,
                 "type": "number"
               }
             },
             "@set_value": {
+              "maximum": 1,
+              "minimum": 0,
               "type": "array",
               "minItems": 3,
               "maxItems": 3,
               "items": {
+                "maximum": 1,
+                "minimum": 0,
                 "type": "number"
               }
             },
@@ -3685,10 +3692,14 @@
               "type": "number"
             },
             "@value_changed": {
+              "maximum": 1,
+              "minimum": 0,
               "type": "array",
               "minItems": 3,
               "maxItems": 3,
               "items": {
+                "maximum": 1,
+                "minimum": 0,
                 "type": "number"
               }
             },
@@ -3762,10 +3773,14 @@
               "type": "number"
             },
             "@value_changed": {
+              "maximum": 1,
+              "minimum": 0,
               "type": "array",
               "minItems": 3,
               "maxItems": 3,
               "items": {
+                "maximum": 1,
+                "minimum": 0,
                 "type": "number"
               }
             },
@@ -4332,17 +4347,6 @@
             "@appliedParameters": {
               "type": "array",
               "items": {
-                "enum": [
-                  "BOUNCE",
-                  "USER_FRICTION",
-                  "FRICTION_COEFFICIENT-2",
-                  "ERROR_REDUCTION",
-                  "CONSTANT_FORCE",
-                  "SPEED-1",
-                  "SPEED-2",
-                  "SLIP-1",
-                  "SLIP-2"
-                ],
                 "default": "BOUNCE",
                 "type": "string"
               }
@@ -5713,10 +5717,6 @@
             "@forceOutput": {
               "type": "array",
               "items": {
-                "enum": [
-                  "ALL",
-                  "NONE"
-                ],
                 "default": "NONE",
                 "type": "string"
               }
@@ -6432,6 +6432,7 @@
               "type": "integer"
             },
             "@readInterval": {
+              "minimum": 0,
               "default": 0.1,
               "type": "number"
             },
@@ -6525,6 +6526,7 @@
               "type": "integer"
             },
             "@timestamp": {
+              "minimum": 0,
               "type": "number"
             },
             "@translation": {
@@ -6541,6 +6543,7 @@
               "type": "integer"
             },
             "@writeInterval": {
+              "minimum": 0,
               "default": 1,
               "type": "number"
             },
@@ -7181,12 +7184,6 @@
             "@family": {
               "type": "array",
               "items": {
-                "enum": [
-                  "SANS",
-                  "SERIF",
-                  "TYPEWRITER",
-                  "Arial"
-                ],
                 "default": "SERIF",
                 "type": "string"
               }
@@ -7797,6 +7794,8 @@
               "$ref": "#/definitions/@geoSystem"
             },
             "@level_changed": {
+              "maximum": 1,
+              "minimum": 0,
               "type": "integer"
             },
             "-metadata": {
@@ -8874,6 +8873,12 @@
             "-joints": {
               "$ref": "#/definitions/-HAnimJointMFNode"
             },
+            "@loa": {
+              "maximum": 4,
+              "minimum": -1,
+              "default": -1,
+              "type": "integer"
+            },
             "-metadata": {
               "$ref": "#/definitions/-X3DMetadataObjectSFNode"
             },
@@ -8949,7 +8954,7 @@
               "$ref": "#/definitions/-HAnimJoint|HAnimSiteMFNode"
             },
             "-skin": {
-              "$ref": "#/definitions/-X3DChildNodeMFNode"
+              "$ref": "#/definitions/-Group|Transform|Shape|IndexedFaceSetMFNode"
             },
             "-skinCoord": {
               "$ref": "#/definitions/-X3DCoordinateNodeSFNode"
@@ -9015,6 +9020,9 @@
         {
           "type": "object",
           "properties": {
+            "-children": {
+              "$ref": "#/definitions/-childrenStatements"
+            },
             "IS": {
               "$ref": "#/definitions/IS"
             },
@@ -9045,11 +9053,9 @@
                 "type": "number"
               }
             },
-            "-children": {
-              "$ref": "#/definitions/-HAnimJoint|HAnimSegmentMFNode"
-            },
-            "-displacers": {
-              "$ref": "#/definitions/-HAnimDisplacerMFNode"
+            "@frameCount": {
+              "minimum": 0,
+              "type": "integer"
             },
             "@limitOrientation": {
               "type": "array",
@@ -9077,6 +9083,7 @@
             },
             "@llimit": {
               "type": "array",
+              "minItems": 3,
               "items": {
                 "type": "number"
               }
@@ -9085,102 +9092,6 @@
               "$ref": "#/definitions/-X3DMetadataObjectSFNode"
             },
             "@name": {
-              "enum": [
-                "HumanoidRoot",
-                "sacroiliac",
-                "l_hip",
-                "l_knee",
-                "l_ankle",
-                "l_subtalar",
-                "l_midtarsal",
-                "l_metatarsal",
-                "r_hip",
-                "r_knee",
-                "r_ankle",
-                "r_subtalar",
-                "r_midtarsal",
-                "r_metatarsal",
-                "vl5",
-                "vl4",
-                "vl3",
-                "vl2",
-                "vl1",
-                "vt12",
-                "vt11",
-                "vt10",
-                "vt9",
-                "vt8",
-                "vt7",
-                "vt6",
-                "vt5",
-                "vt4",
-                "vt3",
-                "vt2",
-                "vt1",
-                "vc7",
-                "vc6",
-                "vc5",
-                "vc4",
-                "vc3",
-                "vc2",
-                "vc1",
-                "skullbase",
-                "l_eyelid_joint",
-                "r_eyelid_joint",
-                "l_eyeball_joint",
-                "r_eyeball_joint",
-                "l_eyebrow_joint",
-                "r_eyebrow_joint",
-                "temporomandibular",
-                "l_sternoclavicular",
-                "l_acromioclavicular",
-                "l_shoulder",
-                "l_elbow",
-                "l_wrist",
-                "l_thumb1",
-                "l_thumb2",
-                "l_thumb3",
-                "l_index0",
-                "l_index1",
-                "l_index2",
-                "l_index3",
-                "l_middle0",
-                "l_middle1",
-                "l_middle2",
-                "l_middle3",
-                "l_ring0",
-                "l_ring1",
-                "l_ring2",
-                "l_ring3",
-                "l_pinky0",
-                "l_pinky1",
-                "l_pinky2",
-                "l_pinky3",
-                "r_sternoclavicular",
-                "r_acromioclavicular",
-                "r_shoulder",
-                "r_elbow",
-                "r_wrist",
-                "r_thumb1",
-                "r_thumb2",
-                "r_thumb3",
-                "r_index0",
-                "r_index1",
-                "r_index2",
-                "r_index3",
-                "r_middle0",
-                "r_middle1",
-                "r_middle2",
-                "r_middle3",
-                "r_ring0",
-                "r_ring1",
-                "r_ring2",
-                "r_ring3",
-                "r_pinky0",
-                "r_pinky1",
-                "r_pinky2",
-                "r_pinky3"
-              ],
               "type": "string"
             },
             "@rotation": {
@@ -9274,6 +9185,104 @@
               }
             },
             "@ulimit": {
+              "type": "array",
+              "minItems": 3,
+              "items": {
+                "type": "number"
+              }
+            },
+            "@DEF": {
+              "type": "string"
+            },
+            "@class": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "HAnimMotion": {
+      "type": "object",
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "@USE": {
+              "type": "string"
+            },
+            "-children": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "object",
+                "properties": {
+                  "#comment": {
+                    "type": "string"
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          },
+          "required": [
+            "@USE"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "-children": {
+              "$ref": "#/definitions/-childrenStatements"
+            },
+            "IS": {
+              "$ref": "#/definitions/IS"
+            },
+            "@channels": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "@channelsEnabled": {
+              "type": "array",
+              "items": {
+                "type": "boolean"
+              }
+            },
+            "@description": {
+              "type": "string"
+            },
+            "@enabled": {
+              "default": false,
+              "type": "boolean"
+            },
+            "@frameDuration": {
+              "exclusiveMinimum": 0,
+              "default": 0.1,
+              "type": "number"
+            },
+            "@frameNumber": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "@joints": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "@loa": {
+              "maximum": 4,
+              "minimum": -1,
+              "default": -1,
+              "type": "integer"
+            },
+            "-metadata": {
+              "$ref": "#/definitions/-X3DMetadataObjectSFNode"
+            },
+            "@values": {
               "type": "array",
               "items": {
                 "type": "number"
@@ -9471,7 +9480,62 @@
                 "r_pinky_metacarpal",
                 "r_pinky_proximal",
                 "r_pinky_middle",
-                "r_pinky_distal"
+                "r_pinky_distal",
+                "l_carpal",
+                "",
+                "l_trapezoid",
+                "l_metacarpal_1",
+                "l_carpal_proximal_phalanx_1",
+                "l_carpal_distal_phalanx_1",
+                "l_metacarpal_2",
+                "l_carpal_proximal_phalanx_2",
+                "l_carpal_middle_phalanx_2",
+                "l_carpal_distal_phalanx_2",
+                "l_capitate",
+                "l_metacarpal_3",
+                "l_carpal_proximal_phalanx_3",
+                "l_carpal_middle_phalanx_3",
+                "l_carpal_distal_phalanx_3",
+                "l_hamate",
+                "l_metacarpal_4",
+                "l_carpal_proximal_phalanx_4",
+                "l_carpal_middle_phalanx_4",
+                "l_carpal_distal_phalanx_4",
+                "l_metacarpal_5",
+                "l_carpal_proximal_phalanx_5",
+                "l_carpal_middle_phalanx_5",
+                "l_carpal_distal_phalanx_5",
+                "r_carpal",
+                "r_trapezoid",
+                "r_metacarpal_1",
+                "r_carpal_proximal_phalanx_1",
+                "r_carpal_distal_phalanx_1",
+                "r_metacarpal_2",
+                "r_carpal_proximal_phalanx_2",
+                "r_carpal_middle_phalanx_2",
+                "r_carpal_distal_phalanx_2",
+                "r_capitate",
+                "r_metacarpal_3",
+                "r_carpal_proximal_phalanx_3",
+                "r_carpal_middle_phalanx_3",
+                "r_carpal_distal_phalanx_3",
+                "r_hamate",
+                "r_metacarpal_4",
+                "r_carpal_proximal_phalanx_4",
+                "r_carpal_middle_phalanx_4",
+                "r_carpal_distal_phalanx_4",
+                "r_metacarpal_5",
+                "r_carpal_proximal_phalanx_5",
+                "r_carpal_middle_phalanx_5",
+                "r_carpal_distal_phalanx_5",
+                "l_talus",
+                "l_metatarsal",
+                "l_tarsal_proximal_phalanx",
+                "l_tarsal_distal_phalanx",
+                "r_talus",
+                "r_metatarsal",
+                "r_tarsal_proximal_phalanx",
+                "r_tarsal_distal_phalanx"
               ],
               "type": "string"
             },
@@ -10034,24 +10098,28 @@
             "@set_colorIndex": {
               "type": "array",
               "items": {
+                "minimum": -1,
                 "type": "integer"
               }
             },
             "@set_coordIndex": {
               "type": "array",
               "items": {
+                "minimum": -1,
                 "type": "integer"
               }
             },
             "@set_normalIndex": {
               "type": "array",
               "items": {
+                "minimum": -1,
                 "type": "integer"
               }
             },
             "@set_texCoordIndex": {
               "type": "array",
               "items": {
+                "minimum": -1,
                 "type": "integer"
               }
             },
@@ -10153,12 +10221,14 @@
             "@set_colorIndex": {
               "type": "array",
               "items": {
+                "minimum": -1,
                 "type": "integer"
               }
             },
             "@set_coordIndex": {
               "type": "array",
               "items": {
+                "minimum": -1,
                 "type": "integer"
               }
             },
@@ -10250,6 +10320,7 @@
             "@set_index": {
               "type": "array",
               "items": {
+                "minimum": 0,
                 "type": "integer"
               }
             },
@@ -10348,6 +10419,7 @@
             "@set_index": {
               "type": "array",
               "items": {
+                "minimum": -1,
                 "type": "integer"
               }
             },
@@ -10446,6 +10518,7 @@
             "@set_index": {
               "type": "array",
               "items": {
+                "minimum": 0,
                 "type": "integer"
               }
             },
@@ -10544,6 +10617,7 @@
             "@set_index": {
               "type": "array",
               "items": {
+                "minimum": -1,
                 "type": "integer"
               }
             },
@@ -11443,11 +11517,6 @@
             "@objectType": {
               "type": "array",
               "items": {
-                "enum": [
-                  "ALL",
-                  "NONE",
-                  "TERRAIN"
-                ],
                 "default": "ALL",
                 "type": "string"
               }
@@ -11483,12 +11552,6 @@
               "$ref": "#/definitions/-X3DGroupingNode|X3DShapeNode|InlineMFNode"
             },
             "@sortOrder": {
-              "enum": [
-                "ANY",
-                "CLOSEST",
-                "ALL",
-                "ALL_SORTED"
-              ],
               "default": "CLOSEST",
               "type": "string"
             },
@@ -11862,6 +11925,7 @@
               "type": "boolean"
             },
             "@level_changed": {
+              "minimum": 0,
               "type": "integer"
             },
             "-metadata": {
@@ -12567,10 +12631,6 @@
             "@forceOutput": {
               "type": "array",
               "items": {
-                "enum": [
-                  "ALL",
-                  "NONE"
-                ],
                 "default": "NONE",
                 "type": "string"
               }
@@ -12699,9 +12759,11 @@
               "type": "string"
             },
             "@duration_changed": {
+              "minimum": -1,
               "type": "number"
             },
             "@elapsedTime": {
+              "minimum": 0,
               "type": "number"
             },
             "@isActive": {
@@ -12831,10 +12893,6 @@
             "@function": {
               "type": "array",
               "items": {
-                "enum": [
-                  "COMPLEMENT",
-                  "ALPHAREPLICATE"
-                ],
                 "type": "string"
               }
             },
@@ -12844,39 +12902,12 @@
             "@mode": {
               "type": "array",
               "items": {
-                "enum": [
-                  "ADD",
-                  "ADDSIGNED",
-                  "ADDSIGNED2X",
-                  "ADDSMOOTH",
-                  "BLENDCURRENTALPHA",
-                  "BLENDDIFFUSEALPHA",
-                  "BLENDFACTORALPHA",
-                  "BLENDTEXTUREALPHA",
-                  "DOTPRODUCT3",
-                  "MODULATE",
-                  "MODULATE2X",
-                  "MODULATE4X",
-                  "MODULATEALPHA_ADDCOLOR",
-                  "MODULATEINVALPHA_ADDCOLOR",
-                  "MODULATEINVCOLOR_ADDALPHA",
-                  "OFF",
-                  "REPLACE",
-                  "SELECTARG1",
-                  "SELECTARG2",
-                  "SUBTRACT"
-                ],
                 "type": "string"
               }
             },
             "@source": {
               "type": "array",
               "items": {
-                "enum": [
-                  "DIFFUSE",
-                  "FACTOR",
-                  "SPECULAR"
-                ],
                 "type": "string"
               }
             },
@@ -13095,11 +13126,6 @@
             "@transitionType": {
               "type": "array",
               "items": {
-                "enum": [
-                  "TELEPORT",
-                  "LINEAR",
-                  "ANIMATE"
-                ],
                 "default": "LINEAR",
                 "type": "string"
               }
@@ -13108,28 +13134,10 @@
               "type": "array",
               "items": [
                 {
-                  "enum": [
-                    "ANY",
-                    "WALK",
-                    "EXAMINE",
-                    "FLY",
-                    "LOOKAT",
-                    "NONE",
-                    "EXPLORE"
-                  ],
                   "default": "EXAMINE",
                   "type": "string"
                 },
                 {
-                  "enum": [
-                    "ANY",
-                    "WALK",
-                    "EXAMINE",
-                    "FLY",
-                    "LOOKAT",
-                    "NONE",
-                    "EXPLORE"
-                  ],
                   "default": "ANY",
                   "type": "string"
                 }
@@ -15110,11 +15118,6 @@
             "@objectType": {
               "type": "array",
               "items": {
-                "enum": [
-                  "ALL",
-                  "NONE",
-                  "TERRAIN"
-                ],
                 "default": "ALL",
                 "type": "string"
               }
@@ -15696,11 +15699,6 @@
             "@objectType": {
               "type": "array",
               "items": {
-                "enum": [
-                  "ALL",
-                  "NONE",
-                  "TERRAIN"
-                ],
                 "default": "ALL",
                 "type": "string"
               }
@@ -15722,12 +15720,6 @@
               "$ref": "#/definitions/-X3DGroupingNode|X3DShapeNode|InlineMFNode"
             },
             "@sortOrder": {
-              "enum": [
-                "ANY",
-                "CLOSEST",
-                "ALL",
-                "ALL_SORTED"
-              ],
               "default": "CLOSEST",
               "type": "string"
             },
@@ -15950,6 +15942,7 @@
             "@set_coordIndex": {
               "type": "array",
               "items": {
+                "minimum": -1,
                 "type": "integer"
               }
             },
@@ -16674,11 +16667,6 @@
             "@objectType": {
               "type": "array",
               "items": {
-                "enum": [
-                  "ALL",
-                  "NONE",
-                  "TERRAIN"
-                ],
                 "default": "ALL",
                 "type": "string"
               }
@@ -16693,12 +16681,6 @@
               "$ref": "#/definitions/-X3DGroupingNode|X3DShapeNode|InlineMFNode"
             },
             "@sortOrder": {
-              "enum": [
-                "ANY",
-                "CLOSEST",
-                "ALL",
-                "ALL_SORTED"
-              ],
               "default": "CLOSEST",
               "type": "string"
             },
@@ -17235,6 +17217,7 @@
               "type": "integer"
             },
             "@readInterval": {
+              "minimum": 0,
               "default": 0.1,
               "type": "number"
             },
@@ -17255,6 +17238,7 @@
               "type": "integer"
             },
             "@timestamp": {
+              "minimum": 0,
               "type": "number"
             },
             "@transmitterApplicationID": {
@@ -17278,6 +17262,7 @@
               "type": "integer"
             },
             "@writeInterval": {
+              "minimum": 0,
               "default": 1,
               "type": "number"
             },
@@ -17434,6 +17419,7 @@
               "type": "number"
             },
             "@disableTime": {
+              "minimum": 0,
               "default": 0,
               "type": "number"
             },
@@ -17663,6 +17649,7 @@
               "type": "number"
             },
             "@disableTime": {
+              "minimum": 0,
               "default": 0,
               "type": "number"
             },
@@ -17997,12 +17984,6 @@
             "@family": {
               "type": "array",
               "items": {
-                "enum": [
-                  "SANS",
-                  "SERIF",
-                  "TYPEWRITER",
-                  "Arial"
-                ],
                 "default": "SERIF",
                 "type": "string"
               }
@@ -18447,10 +18428,6 @@
               "$ref": "#/definitions/-X3DMetadataObjectSFNode"
             },
             "@type": {
-              "enum": [
-                "VERTEX",
-                "FRAGMENT"
-              ],
               "default": "VERTEX",
               "type": "string"
             },
@@ -18524,10 +18501,6 @@
               "$ref": "#/definitions/-X3DMetadataObjectSFNode"
             },
             "@type": {
-              "enum": [
-                "VERTEX",
-                "FRAGMENT"
-              ],
               "default": "VERTEX",
               "type": "string"
             },
@@ -18765,6 +18738,7 @@
               "type": "integer"
             },
             "@readInterval": {
+              "minimum": 0,
               "default": 0.1,
               "type": "number"
             },
@@ -18789,6 +18763,7 @@
               "type": "integer"
             },
             "@timestamp": {
+              "minimum": 0,
               "type": "number"
             },
             "@whichGeometry": {
@@ -18796,6 +18771,7 @@
               "type": "integer"
             },
             "@writeInterval": {
+              "minimum": 0,
               "default": 1,
               "type": "number"
             },
@@ -18971,10 +18947,6 @@
             "@forceOutput": {
               "type": "array",
               "items": {
-                "enum": [
-                  "ALL",
-                  "NONE"
-                ],
                 "default": "NONE",
                 "type": "string"
               }
@@ -19075,10 +19047,6 @@
             "@forceOutput": {
               "type": "array",
               "items": {
-                "enum": [
-                  "ALL",
-                  "NONE"
-                ],
                 "default": "NONE",
                 "type": "string"
               }
@@ -20099,6 +20067,7 @@
             "@set_coordIndex": {
               "type": "array",
               "items": {
+                "minimum": -1,
                 "type": "integer"
               }
             },
@@ -21367,14 +21336,16 @@
               "$ref": "#/definitions/IS"
             },
             "@cycleInterval": {
-              "exclusiveMinimum": 0,
+              "minimum": 0,
               "default": 1,
               "type": "number"
             },
             "@cycleTime": {
+              "minimum": 0,
               "type": "number"
             },
             "@elapsedTime": {
+              "minimum": 0,
               "type": "number"
             },
             "@enabled": {
@@ -21414,6 +21385,7 @@
               "type": "number"
             },
             "@time": {
+              "minimum": 0,
               "type": "number"
             },
             "@DEF": {
@@ -22155,6 +22127,7 @@
               "type": "integer"
             },
             "@readInterval": {
+              "minimum": 0,
               "default": 0.1,
               "type": "number"
             },
@@ -22176,6 +22149,7 @@
               "type": "integer"
             },
             "@timestamp": {
+              "minimum": 0,
               "type": "number"
             },
             "@transmitFrequencyBandwidth": {
@@ -22191,6 +22165,7 @@
               "type": "integer"
             },
             "@writeInterval": {
+              "minimum": 0,
               "default": 1,
               "type": "number"
             },
@@ -22805,10 +22780,6 @@
             "@forceOutput": {
               "type": "array",
               "items": {
-                "enum": [
-                  "ALL",
-                  "NONE"
-                ],
                 "default": "NONE",
                 "type": "string"
               }
@@ -23425,6 +23396,7 @@
             "@set_coordIndex": {
               "type": "array",
               "items": {
+                "minimum": -1,
                 "type": "integer"
               }
             },
@@ -23517,11 +23489,6 @@
             "@objectType": {
               "type": "array",
               "items": {
-                "enum": [
-                  "ALL",
-                  "NONE",
-                  "TERRAIN"
-                ],
                 "default": "ALL",
                 "type": "string"
               }
@@ -23536,12 +23503,6 @@
               "$ref": "#/definitions/-X3DGroupingNode|X3DShapeNode|InlineMFNode"
             },
             "@sortOrder": {
-              "enum": [
-                "ANY",
-                "CLOSEST",
-                "ALL",
-                "ALL_SORTED"
-              ],
               "default": "CLOSEST",
               "type": "string"
             },
@@ -24197,7 +24158,8 @@
             "3.0",
             "3.1",
             "3.2",
-            "3.3"
+            "3.3",
+            "4.0"
           ],
           "default": "3.3",
           "type": "string"
@@ -24205,6 +24167,8 @@
       },
       "required": [
         "@profile",
+        "Scene",
+        "encoding",
         "@version"
       ],
       "additionalProperties": false
@@ -24550,6 +24514,9 @@
           },
           "HAnimJoint": {
             "$ref": "#/definitions/HAnimJoint"
+          },
+          "HAnimMotion": {
+            "$ref": "#/definitions/HAnimMotion"
           },
           "Inline": {
             "$ref": "#/definitions/Inline"
@@ -25328,6 +25295,9 @@
         "HAnimJoint": {
           "$ref": "#/definitions/HAnimJoint"
         },
+        "HAnimMotion": {
+          "$ref": "#/definitions/HAnimMotion"
+        },
         "Inline": {
           "$ref": "#/definitions/Inline"
         },
@@ -26084,6 +26054,9 @@
           "HAnimJoint": {
             "$ref": "#/definitions/HAnimJoint"
           },
+          "HAnimMotion": {
+            "$ref": "#/definitions/HAnimMotion"
+          },
           "Inline": {
             "$ref": "#/definitions/Inline"
           },
@@ -26488,6 +26461,34 @@
         "additionalProperties": false
       }
     },
+    "-Group|Transform|Shape|IndexedFaceSetMFNode": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "#comment": {
+            "type": "string"
+          },
+          "Group": {
+            "$ref": "#/definitions/Group"
+          },
+          "Transform": {
+            "$ref": "#/definitions/Transform"
+          },
+          "Shape": {
+            "$ref": "#/definitions/Shape"
+          },
+          "IndexedFaceSet": {
+            "$ref": "#/definitions/IndexedFaceSet"
+          },
+          "ProtoInstance": {
+            "$ref": "#/definitions/ProtoInstance"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
     "-X3DCoordinateNodeSFNode": {
       "type": "object",
       "properties": {
@@ -26505,28 +26506,6 @@
         }
       },
       "additionalProperties": false
-    },
-    "-HAnimJoint|HAnimSegmentMFNode": {
-      "type": "array",
-      "minItems": 1,
-      "items": {
-        "type": "object",
-        "properties": {
-          "#comment": {
-            "type": "string"
-          },
-          "HAnimJoint": {
-            "$ref": "#/definitions/HAnimJoint"
-          },
-          "HAnimSegment": {
-            "$ref": "#/definitions/HAnimSegment"
-          },
-          "ProtoInstance": {
-            "$ref": "#/definitions/ProtoInstance"
-          }
-        },
-        "additionalProperties": false
-      }
     },
     "-HAnimDisplacerMFNode": {
       "type": "array",
@@ -27734,6 +27713,9 @@
           },
           "HAnimJoint": {
             "$ref": "#/definitions/HAnimJoint"
+          },
+          "HAnimMotion": {
+            "$ref": "#/definitions/HAnimMotion"
           },
           "Inline": {
             "$ref": "#/definitions/Inline"
