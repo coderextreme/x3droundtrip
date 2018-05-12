@@ -22,12 +22,12 @@ do
 	export ROUNDTRIP=`basename "$i"`
 	export RTCANON=`basename "$i" .x3d`Canonical.x3d
 
-	if ls "$NEWDIR/$ORIGINAL"
+	if ls "$NEWDIR/$ORIGINAL" > /dev/null
 	then
 		java -cp $CANONICALIZERDIST/log4j-1.2.15.jar:$CANONICALIZERDIST/xercesImpl.jar:$CANONICALIZERDIST/X3dC14n.jar org.web3d.x3d.tools.x3db.X3dCanonicalizer "$NEWDIR/$ORIGINAL" 2>&1 >> canonicalizer.txt
 		java -cp $CANONICALIZERDIST/log4j-1.2.15.jar:$CANONICALIZERDIST/xercesImpl.jar:$CANONICALIZERDIST/X3dC14n.jar org.web3d.x3d.tools.x3db.X3dCanonicalizer "$DIRNAME/$ROUNDTRIP" 2>&1 >> canonicalizer.txt
-		java Compare "$NEWDIR/$CANON" "$DIRNAME/$RTCANON" 2>&1 | tee -a  javadiffresults.txt
-		# node.exe xmldiff.js "$NEWDIR/$CANON" "$DIRNAME/$RTCANON" 2>&1 | tee -a  diffresults.txt
+		# java Compare "$NEWDIR/$CANON" "$DIRNAME/$RTCANON" 2>&1 | tee -a  javadiffresults.txt
+		node.exe xmldiff.js "$NEWDIR/$CANON" "$DIRNAME/$RTCANON" 2>&1 | tee -a  diffresults.txt
 		# echo diff "$NEWDIR/$CANON" "$DIRNAME/$RTCANON" 
 		# diff -w "$NEWDIR/$CANON" "$DIRNAME/$RTCANON"  | grep -v 'DOCTYPE'
 	else
