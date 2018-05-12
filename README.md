@@ -22,7 +22,9 @@ git clone https://github.com/coderextreme/X3DJSONLD
 git clone https://github.com/coderextreme/x3droundtrip
 cd X3DJSONLD
 npm install
-cd ../x3drountrip
+cd src/main/shell
+sh stripnumbers.sh
+cd ../../../../x3drountrip
 npm install
 sh toxml.sh
 ```
