@@ -291,7 +291,7 @@ CreateElement : function(xmlDoc, key, x3djsonNS, containerField) {
  * a way to create a CDATA function or script in HTML, by using a DOM parser.
  */
 CDATACreateFunction : function(xmlDoc, element, str) {
-	var y = str.replace(/\\"/g, "\\\"")
+	var y = str.trim().replace(/\\"/g, "\\\"")
 		.replace(/&lt;/g, "<")
 		.replace(/&gt;/g, ">")
 		.replace(/&amp;/g, "&");
@@ -530,34 +530,43 @@ ConvertToX3DOM : function(xmlDoc, object, parentkey, element, path, containerFie
 	return element;
 },
 
-/**
- * Load X3D JSON into an element.
+/*
+ * Load X3D JSON into an xml.
+ * DOMImplementation - normally document.implementation
  * jsobj - the JavaScript object to convert to XML and DOM.
  * path - the path of the JSON file.
- * xml - the output xml string array (optional).
- * NS - a namespace for X_ITE (optional) -- stripped out.
- * returns an element in callback or null if error - the element
- * to append or insert into the DOM.
+ *
+ * returns child element, xml document, xml string.
  */
-loadX3DJS : function(DOMImplementation, jsobj, path, xml, NS, loadSchema, doValidate, X3DJSONLD, callback) {
-	this.x3djsonNS = NS;
-	loadSchema(jsobj, path, doValidate, this, function() {
-		var version = jsobj.X3D["@version"];
-       		var docType = DOMImplementation.createDocumentType("X3D", 'ISO//Web3D//DTD X3D '+version+'//EN" "http://www.web3d.org/specifications/x3d-'+version+'.dtd', null);
-		var xmlDoc = DOMImplementation.createDocument(null, "X3D", docType);
+loadJsonIntoXml: function(DOMImplementation, jsobj, path) {
+	var child  = this.loadJsonIntoDom(DOMImplementation, jsobj, path);
+	var xml = this.serializeDOM(jsobj, child, true);
+	return [ child, xml ];
+},
 
-		xmlDoc.insertBefore(xmlDoc.createProcessingInstruction('xml', 'version="1.0" encoding="'+jsobj.X3D["encoding"]+'"'), docType);
-		var child = X3DJSONLD.CreateElement(xmlDoc, 'X3D', NS);
-		child.setAttribute("xmlns:xsd", 'http://www.w3.org/2001/XMLSchema-instance');
-		X3DJSONLD.ConvertToX3DOM(xmlDoc, jsobj, "", child, path);
-		if (typeof xml !== 'undefined' && typeof xml.push === 'function') {
-			xml.push(X3DJSONLD.serializeDOM(jsobj, child, true));
-		}
-		callback(child, xmlDoc, X3DJSONLD);
-	}, function(e) {
-		console.error(e);
-		callback(null, null, X3DJSONLD);
-	});
+/*
+ * Load X3D JSON into an element.
+ * DOMImplementation - normally document.implementation
+ * jsobj - the JavaScript object to convert to XML and DOM.
+ * path - the path of the JSON file.
+ *
+ * returns child element, xml document.
+ */
+loadJsonIntoDom: function(DOMImplementation, jsobj, path) {
+	var xmlDoc = this.prepareDocument(DOMImplementation, jsobj);
+	var child = this.CreateElement(xmlDoc, 'X3D', this.x3djsonNS);
+	child.setAttribute("xmlns:xsd", 'http://www.w3.org/2001/XMLSchema-instance');
+	this.ConvertToX3DOM(xmlDoc, jsobj, "", child, path);
+	return child;
+},
+
+prepareDocument: function(DOMImplementation, jsobj) {
+	var version = jsobj.X3D["@version"];
+       	var docType = DOMImplementation.createDocumentType("X3D", 'ISO//Web3D//DTD X3D '+version+'//EN" "http://www.web3d.org/specifications/x3d-'+version+'.dtd', null);
+	var xmlDoc = DOMImplementation.createDocument(null, "X3D", docType);
+
+	xmlDoc.insertBefore(xmlDoc.createProcessingInstruction('xml', 'version="1.0" encoding="'+jsobj.X3D["encoding"]+'"'), docType);
+	return xmlDoc;
 },
 
 /**

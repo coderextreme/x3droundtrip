@@ -12,13 +12,13 @@ echo "@6 when the left file has a containerField" | tee -a owndiffresults.txt
 echo "@7 when the left file has a key" | tee -a owndiffresults.txt
 echo "@8 is when the objects are unequal" | tee -a owndiffresults.txt
 
-# i is -roundtrip.x3d
+# i is _RoundTrip.x3d
 for i in "$@"
 do
 	export DIRNAME=`dirname "$i"`
 	export ORIGDIRNAME="../X3DJSONLD/src/main/data"
- 	export ORIGINAL=`basename "$i" -roundtrip.x3d`.x3d
- 	export CANON=`basename "$i" -roundtrip.x3d`Canonical.x3d
+ 	export ORIGINAL=`basename "$i" _RoundTrip.x3d`.x3d
+ 	export CANON=`basename "$i" _RoundTrip.x3d`Canonical.x3d
 	export ROUNDTRIP=`basename "$i"`
 	export RTCANON=`basename "$i" .x3d`Canonical.x3d
 

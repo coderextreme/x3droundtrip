@@ -2,13 +2,13 @@
 
 . ./environment
 
-# i is -roundtrip.x3d
+# i is _RoundTrip.x3d
 for i in "$@"
 do
 	export DIRNAME=`dirname "$i"`
 	export NEWDIR=$HOME/`dirname "$i" | sed "s/\/c\/x3d-code\/www.web3d.org/X3DJSONLD\/src\/main\/x3d_code\/www_web3d_org/"`
- 	export ORIGINAL=`basename "$i" -roundtrip.x3d`.Snew.x3d
- 	export CANON=`basename "$i" -roundtrip.x3d`.SnewCanonical.x3d
+ 	export ORIGINAL=`basename "$i" _RoundTrip.x3d`.Snew.x3d
+ 	export CANON=`basename "$i" _RoundTrip.x3d`.SnewCanonical.x3d
 	export ROUNDTRIP=`basename "$i"`
 	export RTCANON=`basename "$i" .x3d`Canonical.x3d
 

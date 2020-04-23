@@ -1,82 +1,32 @@
 var mapToMethod2 = {
 	"Shape" : {
-		"ProtoInstance": "setGeometry"
+		"ProtoInstance" : "setGeometry"
 	},
 	"HAnimJoint" : {
-		"Transform" : "addChild"
+		"Transform" : "addChildren"
 	},
 	"Appearance" : {
-		"ProtoInstance" : "setMaterial"
+		"ProtoInstance" : "addShaders",
+		"ProgramShader" : "addShaders",
+		"ComposedShader" : "addShaders"
 	},
 	"ComposedShader" : {
-		"field" : "addField",
+		"field" : "addField"
 	},
 	"Script" : {
-		"field" : "addField",
-		"IS" : "setIS"
+		"field" : "addField"
 	},
 	"MetadataSet" : {
 		"ProtoInstance" : "setMetadata"
 	},
-	"ProtoInstance" : {
-		"IS" : "setIS"
-	},
-	"X3DGroupingNode" : {
-		"IS" : "setIS"
-	},
-	"CADAssembly" : {
-		"IS" : "setIS"
-	},
-	"Billboard" : {
-		"IS" : "setIS"
-	},
-	"GeoLocation" : {
-		"IS" : "setIS"
-	},
-	"X3DViewportNode" : {
-		"IS" : "setIS"
-	},
-	"LayoutLayer" : {
-		"IS" : "setIS"
-	},
-	"Scene" : {
-		"IS" : "setIS"
-	},
-	"LOD" : {
-		"IS" : "setIS"
-	},
-	"Disk2D" : {
-		"IS" : "setIS"
-	},
-	"Anchor" : {
-		"IS" : "setIS"
-	},
-	"Group" : {
-		"IS" : "setIS"
-	},
 	"RigidBody" : {
 		"CollidableShape" : "addGeometry"
 	},
-	"Viewport" : {
-		"IS" : "setIS"
-	},
-	"GeoTransform" : {
-		"IS" : "setIS"
-	},
-	"ScreenGroup" : {
-		"IS" : "setIS"
-	},
-	"EspduTransform" : {
-		"IS" : "setIS"
-	},
-	"PickableGroup" : {
-		"IS" : "setIS"
-	},
 	"HAnimHumanoid" : {
 		"IS" : "addSkin",
-		"HAnimSite": "addViewpoints",
-		"HAnimSegment": "addSegments",
-		"Group" : "addSkeleton"
+		"HAnimJoint" : "addJoints",
+		"HAnimSegment" : "addSegments",
+		"HAnimSite" : "addViewpoints"
 	},
 	"X3DPickSensorNode" : {
 		"IS" : "addPickedGeometry"
@@ -84,45 +34,15 @@ var mapToMethod2 = {
 	"VolumePickSensor" : {
 		"IS" : "addPickedGeometry"
 	},
-	"Layer" : {
-		"IS" : "setIS"
-	},
-	"StaticGroup" : {
-		"IS" : "setIS"
-	},
 	"PointPickSensor" : {
 		"IS" : "addPickedGeometry"
 	},
-	"LayoutGroup" : {
-		"IS" : "setIS"
-	},
-	"HAnimSite" : {
-		"IS" : "setIS"
-	},
-	"field" : {
-		"IS" : "setIS"
-	},
-	"Transform" : {
-		"IS" : "setIS"
-	},
-	"ProtoBody" : {
-		"IS" : "setIS"
-	},
 	"Collision" : {
-		"IS" : "setIS"
+		"Transform" : "setProxy",
+		"Group" : "setProxy"
 	},
 	"PrimitivePickSensor" : {
 		"IS" : "addPickedGeometry"
-	},
-	"CADLayer" : {
-		"IS" : "setIS"
-	},
-	"fieldValue" : {
-		"IS" : "setIS"
-	},
-	"GeoLOD" : {
-		"IS" : "setIS",
-		"IS" : "addRootNode"
 	},
 	"LinePickSensor" : {
 		"IS" : "addPickedGeometry"
@@ -130,23 +50,13 @@ var mapToMethod2 = {
 	"GeoMetadata" : {
 		"IS" : "addData"
 	},
-	"Switch" : {
-		"IS" : "setIS"
-	},
-	"HAnimSegment" : {
-		"IS" : "setIS"
-	},
 	"GeoLOD" : {
+		"IS" : "addRootNode",
 		"GeoOrigin" : "setGeoOrigin"
 	},
 	"Scene" : {
-		"Metadata" : "addMetadata",
-		"MetadataString" : "addMetadata",
-		"LayerSet" : "addLayerSet"
-	},
-	"HAnimHumanoid" : {
-		"HAnimJoint" : "addJoints",
-		"HAnimSegment" : "addSegments"
+		"LayerSet" : "addLayerSet",
+		"MetadataString" : "addMetadata"
 	}
 };
 
