@@ -8,6 +8,8 @@
     "glob": "*",
     "jsonlint": "*",
     "node-mkdirp": "*",
+    "nomnom": "^1.5.3",
+    "underscore": ">=1.13.1",
     "xml2js": "*",
     "xmldom": "*"
   }
