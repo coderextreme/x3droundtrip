@@ -1,10 +1,10 @@
-if (typeof require === 'function') {
-	var fs = require('fs');
-	var Ajv = require('ajv');
-	var ajv = new Ajv();
-	var localize = require('ajv-i18n');
-	var X3DJSONLD = require('./X3DJSONLD.js');
-}
+var fs = require('fs');
+const Ajv2020 = require("ajv/dist/2020");
+const addFormats = require("ajv-formats");
+var ajv = new Ajv2020({ strict: false });
+addFormats(ajv);
+var localize = require('ajv-i18n');
+var X3DJSONLD = require('./X3DJSONLD.js');
 
 X3DJSONLD = Object.assign(X3DJSONLD, { processURLs : function(urls) { return urls; }});
 var selectObjectFromJSObj = X3DJSONLD.selectObjectFromJSObj;
@@ -18,7 +18,7 @@ function doValidate(json, validated_version, file, X3DJSONLD, success, failure, 
 		}
 		console.error(e);
 	}
-	var version = json.X3D["@version"];
+	var version = "4.0"; // json.X3D["@version"];
 	if (typeof validated_version !== 'undefined') {
 		var valid = validated_version(json);
 		if (!valid) {
@@ -79,14 +79,15 @@ function addSchema(ajv, schemajson, version) {
 
 function loadSchema(json, file, doValidate, X3DJSONLD, success, failure) {
 	var versions = { "3.0":true,"3.1":true,"3.2":true,"3.3":true,"4.0":true }
-	var version = json.X3D["@version"];
+	var version = "4.0"; // json.X3D["@version"];
 	if (!versions[version]) {
-		console.error("Can only validate version 3.0-4.0 presently. Switching version to 3.3.");
-		version = "3.3";
+		console.error("Can only validate version 3.0-4.0 presently. Switching version to 4.0.");
+		version = "4.0";
 	}
 	var validated_version = validate[version];
         if (typeof validated_version === 'undefined') {
-		var ajv = new Ajv({allErrors:true, verbose:true});
+		var ajv = new Ajv2020({allErrors:true, verbose:true});
+		addFormats(ajv);
 		      if (typeof $ === 'function') {
 			      $.getJSON("x3d-"+version+"-JSONSchema.json", function(schemajson) {
 				      validated_version = addSchema(ajv, schemajson, version);

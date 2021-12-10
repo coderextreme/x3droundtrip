@@ -4,13 +4,13 @@
   "private": true,
   "dependencies": {
     "ajv": "*",
+    "ajv-formats": "*",
     "ajv-i18n": "*",
     "glob": "*",
-    "jsonlint": "*",
+    "jsonlint-mod": ">=1.7.6",
     "node-mkdirp": "*",
-    "nomnom": "^1.5.3",
     "underscore": ">=1.13.1",
     "xml2js": "*",
-    "xmldom": "*"
+    "xmldom": ">=0.6.0"
   }
 }
