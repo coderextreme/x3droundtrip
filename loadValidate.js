@@ -29,10 +29,10 @@ function doValidate(json, validated_version, file, X3DJSONLD, success, failure, 
 			var error = "";
 			for (var e in errs) {
 				error += "\n keyword: " + errs[e].keyword + "\n";
-				var dataPath = errs[e].dataPath.replace(/^\./, "").replace(/[\.\[\]']+/g, " > ").replace(/ >[ \t]*$/, "");
+				var instancePath = errs[e].instancePath.replace(/^\./, "").replace(/[\.\[\]']+/g, " > ").replace(/ >[ \t]*$/, "");
 	
-				error += " dataPath: " + dataPath+ "\n";
-				var selectedObject = X3DJSONLD.selectObjectFromJSObj(json, dataPath);
+				error += " instancePath: " + instancePath+ "\n";
+				var selectedObject = X3DJSONLD.selectObjectFromJSObj(json, instancePath);
 				error += " value: " + JSON.stringify(selectedObject,
 					function(k, v) {
 					    var v2 = JSON.parse(JSON.stringify(v));

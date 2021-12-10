@@ -26,7 +26,7 @@ cd src/main/shell
 sh stripnumbers.sh
 cd ../../../../x3drountrip
 npm install
-sh toxml.sh
+bash toxml.sh
 ```
 
 Results are found in diffresults.txt
