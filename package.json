@@ -11,6 +11,6 @@
     "node-mkdirp": "*",
     "underscore": ">=1.13.1",
     "xml2js": "*",
-    "@xmldom/xmldom": ">=0.7.5"
+    "@xmldom/xmldom": ">=0.8.3"
   }
 }
