@@ -1,16 +1,16 @@
 {
   "name": "x3droundtrip",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "dependencies": {
     "ajv": "*",
     "ajv-formats": "*",
     "ajv-i18n": "*",
     "glob": "*",
-    "jsonlint-mod": ">=1.7.6",
+    "jsonlint-mod": "*",
     "node-mkdirp": "*",
-    "underscore": ">=1.13.1",
+    "underscore": "*",
     "xml2js": "*",
-    "@xmldom/xmldom": ">=0.7.5"
+    "@xmldom/xmldom": "*"
   }
 }
