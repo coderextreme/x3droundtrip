@@ -6,7 +6,7 @@
 for i in "$@"
 do
 	export DIRNAME=`dirname "$i"`
-	export NEWDIR=$HOME/`dirname "$i" | sed "s/\/c\/x3d-code\/www.web3d.org/X3DJSONLD\/src\/main\/x3d_code\/www_web3d_org/"`
+	export NEWDIR=$HOME/`dirname "$i" | sed "s/\/c\/Users\/jcarl\/www.web3d.org/X3DJSONLD\/src\/main\/www_web3d_org/"`
  	export ORIGINAL=`basename "$i" _RoundTrip.x3d`.Snew.x3d
  	export CANON=`basename "$i" _RoundTrip.x3d`.SnewCanonical.x3d
 	export ROUNDTRIP=`basename "$i"`
