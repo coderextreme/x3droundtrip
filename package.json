@@ -6,9 +6,6 @@
     "ajv": "*",
     "ajv-formats": "*",
     "ajv-i18n": "*",
-    "glob": "*",
-    "jsonlint-mod": "*",
-    "node-mkdirp": "*",
     "underscore": "*",
     "xml2js": "*",
     "@xmldom/xmldom": "*"
