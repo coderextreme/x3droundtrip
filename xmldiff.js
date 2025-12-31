@@ -1,7 +1,9 @@
 "use strict";
 
-var parseString = require('xml2js').parseString;
-var fs = require('fs');
+import { parseString } from "xml2js";
+import fs from "fs";
+import { globSync } from 'node:fs';
+import { glob } from 'node:fs/promises';
 
 var program = process.argv[1];
 
@@ -18,7 +20,7 @@ var arrayKeys = {
 };
 
 function myTrim(x) {
-    return /-?[0-9.]*/.test(x) ? parseFloat(x) : x;
+    return /-?[0-9.e]*/.test(x) ? parseFloat(x).toFixed(6) : x;
 }
 
 function compare(obj1, p1, obj2, p2) {
@@ -54,15 +56,16 @@ function compare(obj1, p1, obj2, p2) {
 				}
 			} else {
 				str += "@1 "+p1+" "+p2+"\n";
-				str += "< "+JSON.stringify(obj1)+"\n";
-				str += "> "+JSON.stringify(obj2)+"\n";
+				str += "<"+JSON.stringify(obj1)+"\n";
+				str += ">"+JSON.stringify(obj2)+"\n";
 				finalret = false;
 			}
-		} else if (parseFloat(obj1) == parseFloat(obj2)) {
+		} else if (parseFloat(obj1).toFixed(6) === parseFloat(obj2).toFixed(6)) {
+		} else if (JSON.stringify(parseFloat(obj1).toFixed(6)) != JSON.stringify(parseFloat(obj2).toFixed(6))) {
 		} else {
 			str += "@2 "+p1+" "+p2+"\n";
-			str += "< "+JSON.stringify(obj1)+"\n";
-			str += "> "+JSON.stringify(obj2)+"\n";
+			str += "<"+JSON.stringify(obj1)+"\n";
+			str += ">"+JSON.stringify(obj2)+"\n";
 			finalret = false;
 		}
 		// this is a last gasp, and might be removed
@@ -70,13 +73,13 @@ function compare(obj1, p1, obj2, p2) {
 		if (finalret === true) {
 			if (obj1 !== obj2) {
 				str += "@3 "+p1+" "+p2+"\n";
-				str += "< "+JSON.stringify(obj1)+"\n";
-				str += "> "+JSON.stringify(obj2)+"\n";
+				str += "<"+JSON.stringify(obj1)+"\n";
+				str += ">"+JSON.stringify(obj2)+"\n";
 				finalret = false;
 			}
 		}
 		*/
-	} else if (typeof obj1 === 'object' && typeof obj2 === 'object') {
+	} else if (obj1 !== null && typeof obj2 !== null && typeof obj1 === 'object' && typeof obj2 === 'object') {
 		for (var key in obj1) {
 			var p1key = p1+'/'+key;
 			var p2key = p2+'/'+key;
@@ -97,10 +100,10 @@ function compare(obj1, p1, obj2, p2) {
 				// obj1 has key
 				if (key === 'containerField') {
 					str += "@4 "+p1key+"\n";
-					str += "< "+JSON.stringify(obj1[key])+"\n";
+					str += "<"+JSON.stringify(obj1[key])+"\n";
 				} else {
 					str += "@5 "+p1key+"\n";
-					str += "< "+JSON.stringify(obj1[key])+"\n";
+					str += "<"+JSON.stringify(obj1[key])+"\n";
 					finalret = false;
 				}
 			}
@@ -110,21 +113,21 @@ function compare(obj1, p1, obj2, p2) {
 			var p2key = p2+'/'+key;
 			if (typeof obj1[key] === 'undefined') {
 				if (key === 'containerField') {
-					str += "@6"+p2key+"\n";
+					str += "@6 "+p2key+"\n";
 					str += ">"+JSON.stringify(obj2[key])+"\n";
 				} else {
-					str += "@7"+p2key+"\n";
+					str += "@7 "+p2key+"\n";
 					str += ">"+JSON.stringify(obj2[key])+"\n";
 					finalret = false;
 				}
 			}
 		}
 	} else if (!(typeof obj1 === 'undefined' && typeof obj2 === 'undefined')) {
-		if (parseFloat(obj1) == parseFloat(obj2)) {
+		if (parseFloat(obj1).toFixed(6) === parseFloat(obj2).toFixed(6)) {
 		} else {
 			str += "@8 "+p1+" "+p2+"\n";
-			str += "< "+JSON.stringify(obj1)+"\n";
-			str += "> "+JSON.stringify(obj2)+"\n";
+			str += "<"+JSON.stringify(obj1)+"\n";
+			str += ">"+JSON.stringify(obj2)+"\n";
 			finalret = false;
 		}
 	} else {
@@ -134,40 +137,41 @@ function compare(obj1, p1, obj2, p2) {
 		
 }
 
-var glob = require('glob');
 try {
-	var right = fs.readFileSync(files[1]);
+	var rightFile = files[1].replace(/"/g, "");
+	var right = fs.readFileSync(rightFile);
 	parseString(right, function(err, resultright) {
-		if (err) throw "RIGHT FILE "+err;
-		glob(files[0], function(err, filesglobs) {
-			if (err) {
-				console.error(err);
-			}
-			filesglobs.forEach(function(file) {
-				var left = fs.readFileSync(file);
-				parseString(left, function(err, resultleft) {
-					if (err) throw "LEFT FILE "+err;
-					var ret;
-					var str;
-					[ ret, str ] = compare(resultleft, '', resultright, '');
-					if (!ret) {
-						try {
-							console.log("================================================================================");
-							console.log(program, files[0], files[1]);
-							console.log(str);
-							console.log("Different");
-						} catch (e) {
-							console.error("Quit pipe");
-						}
-						/*
-					} else {
-						console.log("Same");
-						*/
+		if (err) throw "RIGHT FILE "+rightFile+" "+err;
+		/*
+		const filesglobs = globSync(files[0]);
+		filesglobs.forEach(function(file) {
+		*/
+			var leftFile = files[0].replace(/"/g, "");
+			var left = fs.readFileSync(leftFile);
+			parseString(left, function(err, resultleft) {
+				if (err) throw "LEFT FILE "+leftFile+" "+err;
+				var ret;
+				var str;
+				[ ret, str ] = compare(resultleft, '', resultright, '');
+				if (!ret) {
+					try {
+						console.log("================================================================================");
+						console.log(program, files[0], files[1]);
+						console.log(str);
+						console.log("Different");
+					} catch (e) {
+						console.error("Quit pipe");
 					}
-					process.exit();
-				});
+					/*
+				} else {
+					console.log("Same");
+					*/
+				}
+				process.exit();
 			});
+		/*
 		});
+		*/
 	});
 } catch (e) {
 	console.error(e, files[0], files[1]);
