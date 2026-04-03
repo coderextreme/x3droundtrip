@@ -3,11 +3,12 @@
   "version": "1.0.1",
   "private": true,
   "dependencies": {
-    "ajv": "*",
-    "ajv-formats": "*",
-    "ajv-i18n": "*",
-    "underscore": "*",
-    "xml2js": "*",
-    "@xmldom/xmldom": "*"
+    "ajv": "8.18.0",
+    "ajv-formats": "3.0.1",
+    "ajv-formats-draft2019": "1.6.1",
+    "ajv-i18n": "4.2.0",
+    "underscore": "1.13.8",
+    "xml2js": "0.6.2",
+    "@xmldom/xmldom": "0.9.9"
   }
 }
