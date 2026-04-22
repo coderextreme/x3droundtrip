@@ -9,6 +9,6 @@
     "ajv-i18n": "4.2.0",
     "underscore": "1.13.8",
     "xml2js": "0.6.2",
-    "@xmldom/xmldom": "0.9.9"
+    "@xmldom/xmldom": "0.9.10"
   }
 }
